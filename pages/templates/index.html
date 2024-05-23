@@ -1,0 +1,30 @@
+{% extends "layouts/app.html" %}
+{% load static %}
+
+{% block link %} 
+<style>
+    .banner-img{
+        background: url("{% static 'img/virus-disinfectan.gif' %}") no-repeat 0px -120px; 
+        min-height: 300px;
+    }
+
+    .img-header{
+        margin-top: -100px;
+        margin-right: 0px;
+    }
+</style>
+{% endblock %}
+
+{% block title %} Bem vindo {% endblock %}
+
+{% block body %}
+
+{% include "partials/main/navbar.html" %}
+
+{% include "partials/main/header.html" %}
+
+{% include "partials/main/section.html" %}
+
+{% include "partials/main/footer.html" %}
+
+{% endblock %}
