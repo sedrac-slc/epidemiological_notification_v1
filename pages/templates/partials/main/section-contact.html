@@ -1,0 +1,26 @@
+<section class="section-contact p-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 align-self-center p-1">
+        <div class="h3">
+          <i class="fa-solid fa-phone text-primary"></i>
+          <span>Entre em Contato Conosco</span>
+        </div>
+        <p class="text-muted">Se você precisa relatar um surto, pedir orientação ou tem dúvidas sobre um alerta epidemiológico, entre em contato conosco. Nossa equipe está pronta para ajudar a proteger a saúde da nossa comunidade. Sua colaboração é essencial.</p>
+      </div>
+      <div class="col-md-6 p-1">
+        <form class="d-flex flex-column gap-1 bg-primary-suave border rounded p-2">
+          <div>
+            {% include 'components/input-email.html' with label="Informa o seu email:" required=True %}
+          </div>
+          <div>
+            {% include 'components/textarea.html' with label="Descreve o assunto:" required=True %}
+          </div> 
+          <div>
+            {% include 'components/button.html' with text="Enviar" icon="fa-solid fa-paper-plane" %}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

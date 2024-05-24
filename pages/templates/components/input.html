@@ -1,0 +1,6 @@
+<label for="{{ id|default:'' }}" class="form-label">
+    <i class="{{ icon|default:'' }}"></i>
+    <span>{{ label|default:'' }}</span>
+    {% if required|default:False %} <span class="text-danger">*</span> {% endif %}
+</label>
+<input class="form-control" type="{{ type|default:'text' }}" id="{{ id|default:'' }}" value="{{ value|default:'' }}" required="{{ required|default:False }}"/>

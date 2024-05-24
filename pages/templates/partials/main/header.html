@@ -1,18 +1,24 @@
 {% load static %}
 <header>
-    <section class="container">
-        <div class="row">
-            <div class="col-md-4 align-self-center">
-                <h2>Provide Special  Services</h2>
-                <p class="text-muted">Third beast two she'd multiply they're form he above do Replenish days said
-                    set doesn't can't subdue air herb lesser dominion saying fruitful given
-                    fifth winged Third beast two she'd multiply they're form he above their
-                    Replenish days said set doesn can'which.</p>
-                <a href="#" class="btn btn-sm btn-outline-primary">More service</a>
-            </div>
-            <div class="col-md-8 position-relative banner-img">
-                {% comment %} <img src="{% static 'img/virus-disinfectan.gif' %}" class="img-header"/> {% endcomment %}
-            </div>
+  <section class="container">
+    <div class="row">
+      <div class="col-md-6 align-self-center">
+        <div class=" h2 mt-2">Bem-vindo ao Portal de Alerta Epidemiológico</div>
+        <p class="text-muted">Aqui, você encontra informações atualizadas sobre surtos de doenças, dicas de prevenção e medidas de controle. Mantenha-se informado e proteja sua saúde e a de sua comunidade.</p>
+        <div class="d-grid gap-2 d-md-block">
+          <button class="btn btn-outline-primary">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span>Autenticação</span>
+          </button>
+          <button class="btn btn-outline-info">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <span>Cadastramento</span>
+          </button>
         </div>
-    </section>
+      </div>
+      <div class="col-md-6 position-relative banner-img">
+        <img src="{% static 'img/virus-disinfectan.gif' %}" class="img-header" alt="Banner img"/>
+      </div>
+    </div>
+  </section>
 </header>

@@ -1,7 +1,10 @@
-<div class="card" style="width: 18rem;">
+<div class="card">
   <div class="card-body">
-    <h5 class="card-title">{{ title|default:"" }}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">{{ subtitle|default:"" }}</h6>
+    <h5 class="card-title">
+      <i class="{{ icon|default:'fa-solid fa-house' }} text-primary"></i>
+      {{ title|default:"" }}
+    </h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary text-justify">{{ subtitle|default:"" }}</h6>
     <p class="card-text">{{ text|default:"" }}</p>
   </div>
 </div>
