@@ -33,14 +33,20 @@
     color: var(--el-darkmode-color) !important;
 }
 
-.modal-content .form-control{
-    background: var(--el-background-suave);
-    color: black;
+.darkmode .main-panel .pagination a{
+    background-color: white !important;
+    color: var(--bs-primary) !important;
+    opacity: 1;
 }
 
 .darkmode .modal-content .form-control{
     background: var(--el-darkmode-background-suave);
     color: white;
+}
+
+.modal-content .form-control{
+    background: var(--el-background-suave);
+    color: black;
 }
 
 .main-panel .table-wrapper table,
