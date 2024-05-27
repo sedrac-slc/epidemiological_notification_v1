@@ -1,0 +1,6 @@
+<label for="{{ id|default:'' }}" class="form-label">
+    <i data-feather="{{ icon|default:'search' }}" aria-hidden="true"></i>
+    <span>{{ label|default:'' }}</span>
+    {% if required|default:False %} <span class="text-danger">*</span> {% endif %}
+</label>
+<input class="form-control border" type="{{ type|default:'text' }}" id="{{ id|default:'' }}" name="{{ id|default:'' }}" value="{{ value|default:'' }}" required="{{ required|default:False }}"/>

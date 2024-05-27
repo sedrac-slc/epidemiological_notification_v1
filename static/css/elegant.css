@@ -1,0 +1,59 @@
+:root{
+    --el-darkmode-breadcrumb-divider-color: rgb(226, 217, 217);
+    --el-darkmode-breadcrumb-item-active: rgb(240, 237, 237);
+    --el-darkmode-background-suave: rgb(17,17,29);
+    --el-darkmode-background: rgb(34, 34, 53);
+    --el-darkmode-color: rgb(214, 215, 227);
+    --el-modal-border-color: rgb(56, 56, 59);
+    --el-background-suave: rgb(239, 240, 246);
+    --m-tr: 5rem;
+}
+
+.darkmode .breadcrumb-item{
+    color: var(--el-darkmode-breadcrumb-divider-color);
+}
+
+.darkmode .breadcrumb-item.active{
+    color: var(--el-darkmode-breadcrumb-item-active);
+}
+
+.darkmode .breadcrumb-item+.breadcrumb-item::before {
+    color: var(--el-darkmode-breadcrumb-divider-color);
+}
+
+.darkmode .modal-content {
+    background-color: var(--el-darkmode-background);
+    --bs-modal-header-border-color:  var(--el-modal-border-color);
+    --bs-modal-footer-border-color:  var(--el-modal-border-color)
+}
+
+.darkmode .modal-content, 
+.darkmode .modal-title,
+.darkmode .btn-close{
+    color: var(--el-darkmode-color) !important;
+}
+
+.modal-content .form-control{
+    background: var(--el-background-suave);
+    color: black;
+}
+
+.darkmode .modal-content .form-control{
+    background: var(--el-darkmode-background-suave);
+    color: white;
+}
+
+.main-panel .table-wrapper table,
+.main-panel .table-wrapper table.posts-table {
+    width: max-content !important;
+}
+
+.main-panel .table-wrapper tbody tr{
+    margin-top: var(--m-tr);
+    margin-bottom: var(--m-tr);
+}
+
+.main-panel .link-modal, .main-panel .users-table tbody{
+    font-size: 10pt;
+    transition: all .3s;
+}

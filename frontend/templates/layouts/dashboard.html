@@ -1,0 +1,36 @@
+{% extends "layouts/elegant.html" %}
+{% block 'breadcrumb' %} 
+    {% include 'components/breadcrumb-item.html' with text=title active=True %}
+{% endblock %}
+{% block 'content' %} 
+    <section class="main-panel white-block d-block gap-1">
+
+        {% include 'components/button-modal.html' with text='Adicionar' icon="plus" %}
+        
+        <div class="table-responsive table-wrapper mt-3">
+            <table class="users-table posts-table text-center">
+                <thead>
+                    <tr>
+                        {% block 'thead' %} {% endblock %}
+                        {% include 'components/th.html' with text='Acção' icon="tool" colspan=2 %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% block 'tbody' %} {% endblock %}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            {% block 'pagination' %} {% endblock %}
+        </div>
+
+    </section>
+
+    {% block 'modal' %} {% endblock %}
+
+{% endblock %}
+
+
+
+

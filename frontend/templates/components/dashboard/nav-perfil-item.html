@@ -1,0 +1,6 @@
+<li>
+    <a {% if danger|default:False %}  class="danger" {% endif %} href="{{ href|default:'#' }}">
+        <i data-feather="{{ icon|default:'user' }}" aria-hidden="true"></i>
+        <span>{{ text|default:'Link' }}</span>
+    </a>
+</li>

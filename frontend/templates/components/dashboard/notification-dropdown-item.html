@@ -1,0 +1,11 @@
+<li>
+    <a href="{{ href|default:'#' }}">
+        <div class="notification-dropdown-icon {{ type|default:'info' }}">
+            <i data-feather="{{ icon|default:'check' }}"></i>
+        </div>
+        <div class="notification-dropdown-text">
+            <span class="notification-dropdown__title">{{ title|default:'' }}</span>
+            <span class="notification-dropdown__subtitle">{{ subtitle|default:'' }}</span>
+        </div>
+    </a>
+</li>

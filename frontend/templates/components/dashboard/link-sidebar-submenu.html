@@ -1,0 +1,5 @@
+<li>
+    <a {% if href %} href="{% url href %}" {% else %} href="#" {% endif %}>
+        <span>{{ text|default:'Submenu'}}</span>
+    </a>
+</li>

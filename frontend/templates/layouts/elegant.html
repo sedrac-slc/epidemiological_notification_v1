@@ -1,0 +1,165 @@
+{% extends "layouts/app.html" %}
+{% load static %}
+{% block link %} 
+    <link href="{% static 'theme/elegant/css/style.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/elegant.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <div class="layer"></div>
+    <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+    <div class="page-flex">
+        <aside class="sidebar">
+            <div class="sidebar-start">
+                <div class="sidebar-head">
+                    <a href="/" class="logo-wrapper" title="Home">
+                        <span class="sr-only">Home</span>
+                        <span class="icon logo" aria-hidden="true"></span>
+                        <div class="logo-text">
+                            <span class="logo-title">{{ site_name }}</span>
+                            <span class="logo-subtitle">{{ subtitle|default:'Perfil' }}</span>
+                        </div>
+                    </a>
+                    <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                        <span class="sr-only">Toggle menu</span>
+                        <span class="icon menu-toggle" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="sidebar-body">
+                    <ul class="sidebar-body-menu">
+                        <li>
+                            {% include 'components/dashboard/link-sidebar.html' with text='Perfil' active=True href='dashboard' %}
+                        </li>
+                        <li>
+                            {% include 'components/dashboard/link-sidebar.html' with text='Instituição' icon='icon image' href='institution.index' %}                            
+                        </li>                        
+                        <li>
+                            {% include 'components/dashboard/link-sidebar-menu.html' with text='Utilizadores' icon='icon user-3' %}
+                            <ul class="cat-sub-menu">
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Médicos' href='doctor.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Pacientes' href='patient.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Laboratório' href='laboratory_technician.index' %}
+                            </ul>
+                        </li>
+                        <li>
+                            {% include 'components/dashboard/link-sidebar-menu.html' with text='Localização' icon='icon folder' %}
+                            <ul class="cat-sub-menu">
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Província' href='province.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Munícipio' href='municipal.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Comuna' href='commune.index' %}
+                            </ul>
+                        </li>
+                        <li>
+                            {% include 'components/dashboard/link-sidebar-bagde.html' with text='Notificação' %}                            
+                        </li>
+                    </ul>
+                    <span class="system-menu__title">Sistema</span>
+                    <ul class="sidebar-body-menu">
+                        <li>
+                            {% include 'components/dashboard/link-sidebar.html' with text='Cargos' icon='icon category' href='role.index' %}
+                        </li>                        
+                        <li>
+                            {% include 'components/dashboard/link-sidebar.html' with text='Permissões' icon='icon edit' href='permission.index' %}
+                        </li>
+                        <li>
+                            {% include 'components/dashboard/link-sidebar.html' with text='Configurações' icon='icon setting' %}                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <a href="##" class="sidebar-user">
+                    {% include 'components/dashboard/picture-avatar.html' with img="theme/elegant/img/avatar/avatar-illustrated-01" %}
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user__title">{{ site_name }}</span>
+                        <span class="sidebar-user__subtitle">Equipa de Suporte</span>
+                    </div>
+                </a>
+            </div>            
+        </aside>
+        <div class="main-wrapper">
+
+            <nav class="main-nav--bg">
+                <div class="container main-nav">
+                    <div class="main-nav-start">
+                        {% include 'components/dashboard/search-wrapper.html' %}                        
+                    </div>
+                    <div class="main-nav-end">
+                        <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                            <span class="sr-only">Toggle menu</span>
+                            <span class="icon menu-toggle--gray" aria-hidden="true"></span>
+                        </button>
+                        <div class="lang-switcher-wrapper">
+                            {% include 'components/dashboard/lang-switcher.html' with text="PT" %}
+                            <ul class="lang-menu dropdown">
+                                {% include 'components/dashboard/lang-item.html' with text="Português" %}
+                                {% include 'components/dashboard/lang-item.html' with text="Inglês" %}
+                            </ul>
+                        </div>
+                        {% include 'components/dashboard/theme-switcher.html' %}
+                        <div class="notification-wrapper">
+                            <button class="gray-circle-btn dropdown-btn" title="To messages" type="button">
+                                <span class="sr-only">To messages</span>
+                                <span class="icon notification active" aria-hidden="true"></span>
+                            </button>
+                            <ul class="users-item-dropdown notification-dropdown dropdown">
+                                {% include 'components/dashboard/notification-dropdown-item.html' with title="O Sistema actuado" subtitle="O sistema foi actualizado com successo" %}
+                                {% include 'components/dashboard/notification-dropdown-item.html' with title="Notificação não enviada" subtitle="Não foi possível o envio de notificação" icon="info" type="danger" %}
+                                <li>
+                                    <a class="link-to-page" href="#">Ver mais notificações</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="nav-user-wrapper">
+                            <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
+                                <span class="sr-only">Meu perfil</span>
+                                {% include 'components/dashboard/picture-avatar.html' with img="theme/elegant/img/avatar/avatar-illustrated-02" %}
+                            </button>
+                            <ul class="users-item-dropdown nav-user-dropdown dropdown">
+                                {% include 'components/dashboard/nav-perfil-item.html' with text="Perfil" icon="user" %}
+                                {% include 'components/dashboard/nav-perfil-item.html' with text="Configuração" icon="settings" %}
+                                {% include 'components/dashboard/nav-perfil-item.html' with text="Sair" icon="log-out" danger=True %} 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="main users chart-page" id="skip-target">
+                <div class="container">
+                    <h2 class="main-title mb-0 pb-0">{{ title }}</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            {% if title %}
+                                {% include 'components/breadcrumb-item.html' with text='Perfil' href='dashboard' %}
+                            {% endif %}
+                            {% block 'breadcrumb' %} {% endblock %}
+                        </ol>
+                      </nav>
+                    {% block 'content' %} {% endblock %}
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="container footer--flex">
+                    <div class="footer-start">
+                        <p>{{ current_year }} &#9400; AlertEPI - <a href="#" target="_blank" rel="noopener noreferrer">alert.epi.ao</a></p>
+                    </div>
+                    <ul class="footer-end">
+                        <li><a href="##">Sobre nós</a></li>
+                        <li><a href="##">Supporte</a></li>
+                    </ul>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %} 
+<script src="{% static 'theme/elegant/plugins/chart.min.js' %}"></script>
+<!-- Icons library -->
+<script src="{% static 'theme/elegant/plugins/feather.min.js' %}"></script>
+<!-- Custom scripts -->
+<script src="{% static 'theme/elegant/js/script.js' %}"></script>
+{% endblock %}

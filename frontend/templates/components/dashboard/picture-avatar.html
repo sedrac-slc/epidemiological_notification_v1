@@ -1,0 +1,9 @@
+{% load static %}
+{% if  img %}
+<span class="sidebar-user-img">
+    <picture>
+        <img src="{% static img %}.png" alt="User name"/>
+        <source srcset="{% static img %}.webp" type="image/webp"/>
+    </picture>
+</span>
+{% endif %}

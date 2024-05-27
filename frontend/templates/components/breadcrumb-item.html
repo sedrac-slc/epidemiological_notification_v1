@@ -1,0 +1,7 @@
+<li class="breadcrumb-item {% if active|default:False %} active {% endif %}" {% if active|default:False %} aria-current="page" {% endif %}>
+    {% if active|default:False %}
+        {{ text }}
+    {% else %}
+        <a {% if href %} href="{% url href %}" {% else %} href="#" {% endif %}> {{ text }} </a>
+    {% endif %}
+</li>

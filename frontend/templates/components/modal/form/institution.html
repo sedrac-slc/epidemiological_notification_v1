@@ -1,0 +1,17 @@
+{% extends "slots/modal.html" %}
+{% block 'body' %} 
+<section class="row">
+   <div class="col-md-6">
+      {% include 'components/input.html' with label="Nome:" icon="file-text" required=True %}
+   </div>
+   <div class="col-md-6">
+      {% include 'components/input.html' with label="Tipo:" icon="type" required=True %}
+   </div>
+   <div class="col-md-6">
+      {% include 'components/input.html' with label="Nome director:" icon="user" required=True %}
+   </div>      
+   <div class="col-md-6">
+      {% include 'components/input.html' with label="Localização:" icon="map" required=True %}
+   </div>
+</section>
+{% endblock %}

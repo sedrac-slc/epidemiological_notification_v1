@@ -1,0 +1,4 @@
+<button class="btn btn-sm {{ btn|default:'btn-outline-primary' }}" type="{{ type|default:'button' }}">
+  {% if icon %} <i data-feather="{{ icon }}" aria-hidden="true"></i> {% endif %}
+  <span>{{ text|default:'' }}</span>
+</button>

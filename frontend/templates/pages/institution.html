@@ -1,0 +1,44 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+    {% include 'components/th.html' with text='Tipo' icon="type" %}
+    {% include 'components/th.html' with text='Director' icon="user" %}
+    {% include 'components/th.html' with text='Localização' icon="map" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for institution in data %}
+        <tr>
+            <td>{{ institution.name }}</td>
+            <td>{{ institution.type }}</td>
+            <td>{{ institution.director }}</td>
+            <td>{{ institution.location }}</td>
+            {% include 'components/td-action.html' with data='institution' %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'pagination' %}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/institution.html' with title="Formulário" %}
+{% endblock %}

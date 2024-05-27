@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'frontend',
+    'backend',
     
-    'pages'
 ]
 
 MIDDLEWARE = [
@@ -64,6 +66,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                'frontend.context_processors.current_year',
+                'frontend.context_processors.site_name',
             ],
         },
     },
