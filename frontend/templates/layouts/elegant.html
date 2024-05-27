@@ -3,6 +3,7 @@
 {% block link %} 
     <link href="{% static 'theme/elegant/css/style.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/elegant.css' %}" rel="stylesheet"/>
+    {% block 'link' %} {% endblock %} 
 {% endblock %}
 
 {% block body %}

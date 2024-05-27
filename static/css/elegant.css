@@ -5,7 +5,7 @@
     --el-darkmode-background: rgb(34, 34, 53);
     --el-darkmode-color: rgb(214, 215, 227);
     --el-modal-border-color: rgb(56, 56, 59);
-    --el-background-suave: rgb(239, 240, 246);
+    --el-background-suave: rgb(223, 224, 226);
     --m-tr: 5rem;
 }
 
@@ -39,12 +39,12 @@
     opacity: 1;
 }
 
-.darkmode .modal-content .form-control{
-    background: var(--el-darkmode-background-suave);
+.darkmode .form-control{
+    background-color: var(--el-darkmode-background-suave) !important;
     color: white;
 }
 
-.modal-content .form-control{
+.form-control{
     background: var(--el-background-suave);
     color: black;
 }
