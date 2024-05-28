@@ -1,1 +1,18 @@
 {% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for province in data %}
+        <tr>
+            <td>{{ province.name }}</td>
+            {% include 'components/td-action.html' with data='province' %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/province.html' with title="Formulário" %}
+{% endblock %}

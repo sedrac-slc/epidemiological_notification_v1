@@ -1,1 +1,18 @@
 {% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for municipal in data %}
+        <tr>
+            <td>{{ municipal.name }}</td>
+            {% include 'components/td-action.html' with data='municipal' %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/municipal.html' with title="Formulário" %}
+{% endblock %}

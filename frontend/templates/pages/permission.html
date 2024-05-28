@@ -1,1 +1,22 @@
 {% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+    {% include 'components/th.html' with text='Código' icon="file" %}
+    {% include 'components/th.html' with text='Descrição' icon="message-circle" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for permission in data %}
+        <tr>
+            <td>{{ permission.name }}</td>
+            <td>{{ permission.code }}</td>
+            <td>{{ permission.description }}</td>
+            {% include 'components/td-action.html' with data='permission' %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/permission.html' with title="Formulário" %}
+{% endblock %}

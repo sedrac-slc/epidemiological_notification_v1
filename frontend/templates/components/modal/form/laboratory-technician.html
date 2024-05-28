@@ -1,0 +1,6 @@
+{% extends "slots/modal.html" %}
+{% block 'body' %} 
+<section class="row">
+   {% include 'partials/user-inputs.html' with password=True %}
+</section>
+{% endblock %}

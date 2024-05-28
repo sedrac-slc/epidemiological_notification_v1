@@ -1,1 +1,28 @@
 {% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+    {% include 'components/th.html' with text='Username' icon="file" %}
+    {% include 'components/th.html' with text='Email' icon="mail" %}
+    {% include 'components/th.html' with text='Nascimento' icon="calendar" %}
+    {% include 'components/th.html' with text='Gênero' icon="users" %}
+    {% include 'components/th.html' with text='Telefone' icon="phone" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for doctor in data %}
+        <tr>
+            <td>{{ doctor.name }}</td>
+            <td>{{ doctor.username }}</td>
+            <td>{{ doctor.email }}</td>
+            <td>{{ doctor.birthday }}</td>
+            <td>{{ doctor.gender }}</td>
+            <td>{{ doctor.phone }}</td>
+            {% include 'components/td-action.html' with data='doctor' %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/doctor.html' with title="Formulário" %}
+{% endblock %}

@@ -3,6 +3,4 @@
     <span>{{ label|default:'' }}</span>
     {% if required|default:False %} <span class="text-danger">*</span> {% endif %}
 </label>
-<textarea class="form-control" type="{{ type|default:'' }}" id="{{ id|default:'' }}" value="{{ value|default:'' }}" required="{{ required|default:False }}">
-    {{ value|default:'' }}
-</textarea>
+<textarea class="form-control" type="{{ type|default:'' }}" id="{{ id|default:'' }}" value="{{ value|default:'' }}" required="{{ required|default:False }}">{% if value %} {{ value|default:'' }} {% endif %}</textarea>
