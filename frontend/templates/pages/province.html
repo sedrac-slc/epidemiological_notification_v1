@@ -7,12 +7,20 @@
 {% block 'tbody' %}
     {% for province in data %}
         <tr>
-            <td>{{ province.name }}</td>
-            {% include 'components/td-action.html' with data='province' %}
+            <td id="name-{{ forloop.counter0 }}">{{ province.name }}</td>
+            {% include 'components/td-action.html' with data='province' index=forloop.counter0 model=province.id %}
         </tr>
     {% endfor %}
 {% endblock %}
 
 {% block 'modal' %}
     {% include 'components/modal/form/province.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            valueChange(item, 'name');
+        }
+    </script>
 {% endblock %}

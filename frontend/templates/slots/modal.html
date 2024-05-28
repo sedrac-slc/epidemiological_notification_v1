@@ -1,5 +1,5 @@
  <div class="modal fade" id="modalCrudAction" tabindex="-1" aria-labelledby="modalCrudActionLabel" aria-hidden="true">
-    <form action="{{ action|default:'#' }}" class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <form {% if store %} action="{{ store }}" method="POST" {% endif %}  class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="modalCrudActionLabel">{{ title }}</h1>
@@ -7,13 +7,17 @@
         </div>
         <div class="modal-body">
           {% block 'body' %} {% endblock %}
+          {% if store %} 
+              {% csrf_token %}
+              <input type="hidden" name="model" id="model" />
+          {% endif %}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
               <i data-feather="{{ icon|default:'trash' }}" aria-hidden="true"></i>
               <span>Cancela</span>
           </button>
-          <button {% if action %} type="submit" {% else %} type="button" {% endif %} class="btn btn-outline-primary">
+          <button {% if store %} type="submit" {% else %} type="button" {% endif %} class="btn btn-outline-primary">
               <i data-feather="{{ icon|default:'save' }}" aria-hidden="true"></i>
               <span>Confirmo</span>
           </button>

@@ -20,4 +20,5 @@ class EntityCommon(models.Model):
         abstract = True
 
     def concat_values_fields(self, parm):
-        self.concat_fields = f"{self.id},{parm},{self.created_at},{self.updated_at}"
+        concatenated_parm = ";".join(parm)
+        self.concat_fields = f"{self.id};{concatenated_parm};{self.created_at};{self.updated_at}"

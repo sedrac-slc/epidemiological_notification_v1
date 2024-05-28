@@ -13,8 +13,13 @@ urlpatterns = [
 
     path('role/', role.index, name="role.index"),
     path('doctor/', doctor.index, name="doctor.index"),
-    path('patient/', patient.index, name="patient.index"),   
+    path('patient/', patient.index, name="patient.index"),  
+     
     path('province/', province.index, name="province.index"),
+    path('province/store', province.store, name="province.store"),
+    path('province/update', province.update, name="province.update"),
+    path('province/delete', province.delete, name="province.delete"),
+    
     path('municipal/', municipal.index, name="municipal.index"),
     path('permission/', permission.index, name="permission.index"),
     path('institution/', institution.index, name="institution.index"),

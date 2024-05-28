@@ -1,5 +1,5 @@
-<button class="btn btn-sm {{ btn|default:'btn-outline-primary' }}" type="{{ type|default:'button' }}"
-  data-bs-toggle="modal" data-bs-target="#modalCrudAction">
+<button id="buttonStoreModalCrudAction" class="btn btn-sm {{ btn|default:'btn-outline-primary' }}" type="{{ type|default:'button' }}"
+  data-bs-toggle="modal" data-bs-target="#modalCrudAction"  data-action="{{ store }}">
   {% if icon %} <i data-feather="{{ icon }}" aria-hidden="true"></i> {% endif %}
   <span>{{ text|default:'' }}</span>
 </button>

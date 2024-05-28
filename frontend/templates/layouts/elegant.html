@@ -157,9 +157,14 @@
 {% endblock %}
 
 {% block script %} 
-<script src="{% static 'theme/elegant/plugins/chart.min.js' %}"></script>
-<!-- Icons library -->
-<script src="{% static 'theme/elegant/plugins/feather.min.js' %}"></script>
-<!-- Custom scripts -->
-<script src="{% static 'theme/elegant/js/script.js' %}"></script>
+
+    <script src="{% static 'theme/elegant/plugins/chart.min.js' %}"></script>
+    <!-- Icons library -->
+    <script src="{% static 'theme/elegant/plugins/feather.min.js' %}"></script>
+    <!-- Custom scripts -->
+    <script src="{% static 'theme/elegant/js/script.js' %}"></script>
+    
+    <script src="{% static 'js/btn-action.js' %}"></script>
+    
+    {% block 'script' %} {% endblock %} 
 {% endblock %}
