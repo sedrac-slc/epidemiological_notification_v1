@@ -1,22 +1,22 @@
-1- python3 -m venv venv
+1- python -m venv venv
    pip install virtualenv
 2- venv/Scripts/activate (bash)
    venv/Scripts/activate.bat (cmd)
    venv/Scripts/Activate.ps1 (PowerShell)
 3- pip install django
 4- django-admin startproject setup .
-5- python3 manage.py runserver
+5- python manage.py runserver
 
 criando um app (ou módulo)
-6- python3 manage.py startapp persons
+6- python manage.py startapp persons
 
 criando as migrations
-7- python3 manage.py makemigrations
+7- python manage.py makemigrations
 
 criando as migrate no banco de dados
-8- python3 manage.py migrate
+8- python manage.py migrate
 
 criando um usuario super para aréa administrativa do django
-9- python3 manage.py createsuperuser
+9- python manage.py createsuperuser
 
 pip install django-role-permissions

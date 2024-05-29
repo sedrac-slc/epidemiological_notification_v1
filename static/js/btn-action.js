@@ -18,10 +18,29 @@ const valueChange = (item, attrName) => {
     modalForm.querySelector(`#${attrName}`).value = tableResponsive.querySelector(`#${attrName}-${index}`).innerHTML;
 }
 
+const modalHeaderBackgroudChange = (bgColor, textColor, text) => {
+    const modalHeader = modalForm.querySelector(".modal-header");
+    const modalTitle = modalHeader.querySelector(".modal-title");
+    modalHeader.setAttribute("class", `modal-header ${bgColor}`)
+    modalTitle.setAttribute("class", `modal-title fs-5 ${textColor}`);
+    modalTitle.innerHTML = text;
+}
+
+const closedOrOpenFormControl = (isOpen) => {
+    const formControl = modalForm.querySelectorAll(".form-control");
+    if(isOpen){
+        formControl.forEach((item) => { if(item.hasAttribute('disabled')) item.removeAttribute('disabled'); });
+    }else{
+        formControl.forEach((item) => { if(!item.hasAttribute('disabled')) item.setAttribute('disabled', true); });
+    }
+}
+
 btnUpdate.forEach( item => {
     item.addEventListener('click', (e) => {
         modelChange(item)
         formChangeInputValues(item)
+        closedOrOpenFormControl(true);
+        modalHeaderBackgroudChange("bg-warning", "text-white", "Editar");
     })
 })
 
@@ -29,6 +48,8 @@ btnDelete.forEach( item => {
     item.addEventListener('click', (e) => {
         modelChange(item)
         formChangeInputValues(item)
+        closedOrOpenFormControl(false);
+        modalHeaderBackgroudChange("bg-danger", "text-white", "Eliminar");
     })
 })
 
@@ -36,4 +57,6 @@ buttonStoreModalCrudAction.addEventListener('click', (e) =>{
     const formControl = modalForm.querySelectorAll('.form-control');
     formControl.forEach((item) => item.value = "");
     actionChange(buttonStoreModalCrudAction)
+    closedOrOpenFormControl(true);
+    modalHeaderBackgroudChange("bg-none", "text-black", "Adicionar");
 })
