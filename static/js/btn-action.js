@@ -13,7 +13,7 @@ const modelChange = (item) => {
     modalForm.querySelector("#model").value = item.dataset.model;
 }
 
-const valueChange = (item, attrName) => {
+const inputValueChange = (item, attrName) => {
     let index = item.dataset.index;
     modalForm.querySelector(`#${attrName}`).value = tableResponsive.querySelector(`#${attrName}-${index}`).innerHTML;
 }

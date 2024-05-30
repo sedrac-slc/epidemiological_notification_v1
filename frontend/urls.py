@@ -21,6 +21,10 @@ urlpatterns = [
     path('province/delete', province.delete, name="province.delete"),
     
     path('municipal/', municipal.index, name="municipal.index"),
+    path('municipal/store', municipal.store, name="municipal.store"),
+    path('municipal/update', municipal.update, name="municipal.update"),
+    path('municipal/delete', municipal.delete, name="municipal.delete"),    
+    
     path('permission/', permission.index, name="permission.index"),
     path('institution/', institution.index, name="institution.index"),
     path('laboratory_technician/', laboratory_technician.index, name="laboratory_technician.index"),
