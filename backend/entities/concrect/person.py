@@ -4,12 +4,10 @@ from backend.entity import EntityCommon
 from backend.enums import GENDER_CHOICES, MARITAL_STATUS_CHOICES
 
 def genders():
-    return [ ('MALE', 'Masculino'), ('FEMALE', 'Femenino')]
+    return {'MALE': 'Masculino', 'FEMALE': 'Feminino'}
 
 def maritalStatus():
-    return [ 
-        ('SINGLE', 'Solteiro'), ('MARRIED', 'Casado(a)'), ('WIDOWER', 'Viúvo(a)'), ('DIVORCED', 'Divorciado(a)'),
-    ]
+    return {'SINGLE': 'Solteiro', 'MARRIED': 'Casado(a)','WIDOWER': 'Viúvo(a)', 'DIVORCED': 'Divorciado(a)'}
 
 # Create your models here.
 class Person(EntityCommon):
@@ -22,4 +20,4 @@ class Person(EntityCommon):
     birthday = models.DateField()
 
     def concat_values_fields(self):
-        self.concat_fields = f"{self.fullname},{self.identityCardNumber},{self.gender},{self.maritalStatus},{self.birthday}"
+        super().concat_values_fields([self.fullname, self.user.username, self.user.email, self.identityCardNumber, self.phone, self.gender, self.maritalStatus, self.birthday])  

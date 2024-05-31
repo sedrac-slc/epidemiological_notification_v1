@@ -3,13 +3,17 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.urls import reverse
 from django.db import transaction
-from django.http import HttpResponse
 from backend.entities.concrect.person import genders, maritalStatus
-from backend.dto.user import user_request, person_request
+from backend.service.concrect.doctor import DoctorService
+from django.http import HttpResponse
+
+doctorService = DoctorService()
 
 # Create your views here.
 def index(request):
+    data = doctorService.findAllPage(request)
     return render(request, "pages/doctor.html", { 
+        'data': data,
         'title': 'Médico',
         'genders': genders(),
         'maritalStatus' : maritalStatus(),
@@ -22,11 +26,10 @@ def store(request):
     if request.method != "POST": return redirect('doctor.index')
     try:
         with transaction.atomic():
-            user = user_request(request)
-            person = person_request(request, user)
-            messages.success(request, 'Doctor cadastrada com successo!')
-        return redirect('doctor.index')
-    except Exception as e:
+            doctorService.save(request)
+            messages.success(request, 'Médico cadastrada com successo!')
+            return redirect('doctor.index')
+    except Exception:
         messages.error(request, 'Não foi possível realizar o cadastramento!')
         return redirect('doctor.index')
    
@@ -34,11 +37,11 @@ def store(request):
 def update(request):
     if request.method != "POST": return redirect('doctor.index') 
     
-    messages.success(request, 'Doctor editada com successo!')
+    messages.success(request, 'Médico editada com successo!')
     return redirect('doctor.index')
 
 def delete(request):
     if request.method != "POST": return redirect('doctor.index')
     
-    messages.success(request, 'Doctor eliminada com successo!')
+    messages.success(request, 'Médico eliminada com successo!')
     return redirect('doctor.index')

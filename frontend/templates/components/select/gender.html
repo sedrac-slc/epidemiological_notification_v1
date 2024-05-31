@@ -1,6 +1,6 @@
 {% extends "slots/select.html" %}
 {% block 'option' %} 
-    {% for value, text in genders %}
+    {% for value, text in genders.items %}
         <option value="{{ value }}"> {{ text }} </option>
     {% endfor %}
 {% endblock %}

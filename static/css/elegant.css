@@ -44,6 +44,11 @@
     color: white;
 }
 
+.darkmode .table{
+    --bs-table-bg: var(--el-darkmode-background);
+    --bs-table-color: white;
+}
+
 .form-control{
     background: var(--el-background-suave);
     color: black;

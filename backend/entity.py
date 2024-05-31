@@ -22,3 +22,6 @@ class EntityCommon(models.Model):
     def concat_values_fields(self, parm):
         concatenated_parm = ";".join(parm)
         self.concat_fields = f"{self.id};{concatenated_parm};{self.created_at};{self.updated_at}"
+
+    def concat_values_fields_str(self, parm):
+        self.concat_fields = parm
