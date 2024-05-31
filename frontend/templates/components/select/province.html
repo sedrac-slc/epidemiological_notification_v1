@@ -1,0 +1,6 @@
+{% extends "slots/select.html" %}
+{% block 'option' %} 
+    {% for province in provinces %}
+        <option value="{{ province.id }}"> {{ province.name }} </option>
+    {% endfor %}
+{% endblock %}

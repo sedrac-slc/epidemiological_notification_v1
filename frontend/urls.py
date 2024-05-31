@@ -12,8 +12,16 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name="dashboard"),
 
     path('role/', role.index, name="role.index"),
+    
     path('doctor/', doctor.index, name="doctor.index"),
-    path('patient/', patient.index, name="patient.index"),  
+    path('doctor/store', doctor.store, name="doctor.store"),
+    path('doctor/update', doctor.update, name="doctor.update"),
+    path('doctor/delete', doctor.delete, name="doctor.delete"),    
+    
+    path('patient/', patient.index, name="patient.index"),
+    path('patient/store', patient.store, name="patient.store"),
+    path('patient/update', patient.update, name="patient.update"),
+    path('patient/delete', patient.delete, name="patient.delete"),        
      
     path('province/', province.index, name="province.index"),
     path('province/store', province.store, name="province.store"),
@@ -26,6 +34,9 @@ urlpatterns = [
     path('municipal/delete', municipal.delete, name="municipal.delete"),    
     
     path('permission/', permission.index, name="permission.index"),
+    
     path('institution/', institution.index, name="institution.index"),
+    
     path('laboratory_technician/', laboratory_technician.index, name="laboratory_technician.index"),
+    
 ]

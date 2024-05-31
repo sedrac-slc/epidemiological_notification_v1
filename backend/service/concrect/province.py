@@ -3,9 +3,13 @@ from backend.service.helper import paginator
 from django.utils import timezone
 
 class ProvinceService:
+   
+    def findAll(self):
+        data = Province.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
+        return data
     
     def findAllPage(self, request):
-        data = Province.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
+        data = self.findAll()
         return paginator(request, data)
     
     def findById(self, id):

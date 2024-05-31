@@ -18,6 +18,16 @@ const inputValueChange = (item, attrName) => {
     modalForm.querySelector(`#${attrName}`).value = tableResponsive.querySelector(`#${attrName}-${index}`).innerHTML;
 }
 
+const selectValueChange = (item, attrName) => {
+    let index = item.dataset.index;
+    let select = modalForm.querySelector(`#${attrName}`);
+    let value = tableResponsive.querySelector(`#${attrName}-${index}`).dataset.value;
+    let children = select.childNodes;
+    children.forEach(option => {
+        if (option.value == value)  option.selected = true;
+    });    
+}
+
 const modalHeaderBackgroudChange = (bgColor, textColor, text) => {
     const modalHeader = modalForm.querySelector(".modal-header");
     const modalTitle = modalHeader.querySelector(".modal-title");

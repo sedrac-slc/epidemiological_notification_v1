@@ -18,7 +18,7 @@ class MunicipalService:
     
     def update(self, data: Municipal):
         data.concat_values_fields()
-        Municipal.objects.filter(id = data.id).update(name = data.name, concat_fields = data.concat_fields)
+        Municipal.objects.filter(id = data.id).update(name = data.name, province = data.province, concat_fields = data.concat_fields)
         return data
     
     def remove(self, id):

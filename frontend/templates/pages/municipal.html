@@ -2,17 +2,30 @@
 
 {% block 'thead' %}
     {% include 'components/th.html' with text='Nome' icon="file-text" %}
+    {% include 'components/th.html' with text='Pronvíncia' icon="map" %}
 {% endblock %}
 
 {% block 'tbody' %}
     {% for municipal in data %}
         <tr>
-            <td>{{ municipal.name }}</td>
-            {% include 'components/td-action.html' with data='municipal' %}
+            <td id="name-{{ forloop.counter0 }}">{{ municipal.name }}</td>
+            <td id="province-{{ forloop.counter0 }}" data-value="{{ municipal.province.id }}">
+                {{ municipal.province.name }}
+            </td>
+            {% include 'components/td-action.html' with data='municipal' index=forloop.counter0 model=municipal.id%}
         </tr>
     {% endfor %}
 {% endblock %}
 
 {% block 'modal' %}
     {% include 'components/modal/form/municipal.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'name')
+            selectValueChange(item, 'province')
+        }
+    </script>
 {% endblock %}

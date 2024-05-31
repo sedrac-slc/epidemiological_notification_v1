@@ -1,0 +1,12 @@
+
+GENDER_CHOICES = [
+    ('MALE', 'MALE'),
+    ('FEMALE', 'FEMALE'),
+]
+
+MARITAL_STATUS_CHOICES = [
+    ('SINGLE', 'SINGLE'),
+    ('MARRIED', 'MARRIED'),
+    ('WIDOWER', 'WIDOWER'),
+    ('DIVORCED', 'DIVORCED'),
+]
