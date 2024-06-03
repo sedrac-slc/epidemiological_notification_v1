@@ -1,5 +1,5 @@
 {% extends "layouts/dashboard.html" %}
-
+{% load static %}
 {% block 'thead' %}
     {% include 'components/th.html' with text='Nome' icon="file-text" %}
     {% include 'components/th.html' with text='Bilhete' icon="file" %}
@@ -34,18 +34,5 @@
 {% endblock %}
 
 {% block 'script' %}
-    <script>
-        const formChangeInputValues = (item) => {
-
-            inputValueChange(item, 'identityCardNumber')
-            inputValueChange(item, 'fullname')
-            inputValueChange(item, 'birthday')
-            inputValueChange(item, 'phone')
-            inputValueChange(item, 'email')
-
-            selectValueChange(item, 'maritalStatus')
-            selectValueChange(item, 'gender')
-
-        }
-    </script>
+    <script src="{% static 'js/person.js' %}"></script>
 {% endblock %}

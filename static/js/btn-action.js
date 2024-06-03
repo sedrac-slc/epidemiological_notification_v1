@@ -1,3 +1,6 @@
+const METHOD_UPDATE = "update";
+const METHOD_DELETE = "delete";
+
 const btnUpdate = document.querySelectorAll('.btn-update');
 const btnDelete = document.querySelectorAll('.btn-delete');
 const modalForm = document.querySelector('#modalCrudAction');
@@ -69,4 +72,5 @@ buttonStoreModalCrudAction.addEventListener('click', (e) =>{
     actionChange(buttonStoreModalCrudAction)
     closedOrOpenFormControl(true);
     modalHeaderBackgroudChange("bg-none", "text-black", "Adicionar");
+    if(typeof saveCrud === 'function') saveCrud(e.target)
 })
