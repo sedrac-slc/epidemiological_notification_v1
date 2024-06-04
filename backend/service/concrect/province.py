@@ -25,7 +25,7 @@ class ProvinceService:
         Province.objects.filter(id = data.id).update(name = data.name, concat_fields = data.concat_fields)
         return data
     
-    def remove(self, id):
+    def hidden(self, id):
         data = self.findById(id)
         Province.objects.filter(id = data.id).update(deleted_at = timezone.now())
         return data    

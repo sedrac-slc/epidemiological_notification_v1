@@ -1,6 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.shortcuts import redirect
 from django.urls import reverse
 from backend.service.concrect.province import ProvinceService
 from backend.dto.province import to_province, to_province_model
@@ -20,7 +19,6 @@ def index(request):
 
 def store(request):
     if request.method != "POST": return redirect('province.index')
-    
     provinceService.save(to_province(request))
     messages.success(request, 'Província cadastrada com successo!')
     return redirect('province.index')
@@ -28,14 +26,12 @@ def store(request):
 
 def update(request):
     if request.method != "POST": return redirect('province.index') 
-    
     provinceService.update(to_province_model(request))
     messages.success(request, 'Província editada com successo!')
     return redirect('province.index')
 
 def delete(request):
     if request.method != "POST": return redirect('province.index')
-    
-    provinceService.remove(request.POST.get('model'))
+    provinceService.hidden(request.POST.get('model'))
     messages.success(request, 'Província eliminada com successo!')
     return redirect('province.index')

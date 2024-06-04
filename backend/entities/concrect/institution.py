@@ -1,11 +1,9 @@
 from django.db import models
 from django.db.models import PROTECT
 from backend.entity import EntityCommon
-from .province import Province
 from .municipal import Municipal
 
 class Institution(EntityCommon):
-    province = models.OneToOneField(Province, on_delete = PROTECT)
     municipal = models.OneToOneField(Municipal, on_delete = PROTECT)
     name = models.TextField(max_length=255)
     type = models.TextField(max_length=255)

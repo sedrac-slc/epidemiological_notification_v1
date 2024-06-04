@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
 from backend.service.concrect.province import ProvinceService
@@ -24,7 +23,6 @@ def index(request):
     
 def store(request):
     if request.method != "POST": return redirect('municipal.index')
-    
     municipalService.save(to_municipal(request))
     messages.success(request, 'Municipio cadastrada com successo!')
     return redirect('municipal.index')
@@ -32,14 +30,12 @@ def store(request):
 
 def update(request):
     if request.method != "POST": return redirect('municipal.index') 
-    
     municipalService.update(to_municipal_model(request))
     messages.success(request, 'Municipio editada com successo!')
     return redirect('municipal.index')
 
 def delete(request):
     if request.method != "POST": return redirect('municipal.index')
-    
-    municipalService.remove(request.POST.get('model'))
+    municipalService.hidden(request.POST.get('model'))
     messages.success(request, 'Municipio eliminada com successo!')
     return redirect('municipal.index')    

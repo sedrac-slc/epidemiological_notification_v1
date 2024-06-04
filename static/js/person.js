@@ -1,12 +1,16 @@
-const hiddenChange = (attrName, value = "secret") => {
+const getParentHiddenOrOpen = (attrName, value) => {
     const input = modalForm.querySelector(`#${attrName}`);
-    const parent = input.parentElement
+    input.value = value;
+    return  input.parentElement;
+}
+
+const hiddenChange = (attrName, value = "secret") => {
+    const parent = getParentHiddenOrOpen(attrName, value)
     if(!parent.classList.contains('d-none')) parent.classList.add('d-none')
 }
 
 const openChange = (attrName, value = "") => {
-    const input = modalForm.querySelector(`#${attrName}`);
-    const parent = input.parentElement
+    const parent = getParentHiddenOrOpen(attrName, value)
     if(parent.classList.contains('d-none')) parent.classList.remove('d-none')
 }        
 

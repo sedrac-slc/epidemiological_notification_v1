@@ -38,5 +38,8 @@ urlpatterns = [
     path('institution/', institution.index, name="institution.index"),
     
     path('laboratory_technician/', laboratory_technician.index, name="laboratory_technician.index"),
+    path('laboratory_technician/store', laboratory_technician.store, name="laboratory_technician.store"),
+    path('laboratory_technician/update', laboratory_technician.update, name="laboratory_technician.update"),
+    path('laboratory_technician/delete', laboratory_technician.delete, name="laboratory_technician.delete"),       
     
 ]

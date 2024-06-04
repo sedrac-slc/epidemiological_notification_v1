@@ -1,27 +1,53 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
+from django.db import transaction
+from backend.entities.concrect.person import genders, maritalStatus
+from backend.service.concrect.patient import PatientService
+
+patientService = PatientService()
 
 # Create your views here.
 def index(request):
-    return render(request, "pages/patient.html", { 'title': 'Paciente'})
-
+    data = patientService.findAllPage(request)
+    return render(request, "pages/patient.html", { 
+        'data': data,
+        'title': 'Pacientes',
+        'genders': genders(),
+        'maritalStatus' : maritalStatus(),
+        'store': reverse('patient.store'),
+        'update': reverse('patient.update'),
+        'delete': reverse('patient.delete') 
+    })
+    
 def store(request):
     if request.method != "POST": return redirect('patient.index')
-    
-    messages.success(request, 'Paciente cadastrada com successo!')
+    try:
+        with transaction.atomic():
+            patientService.save(request)
+            messages.success(request, 'Paciente cadastrada com successo!')
+    except Exception:
+        messages.error(request, 'Não foi possível realizar o cadastramento!')
     return redirect('patient.index')
    
 
 def update(request):
-    if request.method != "POST": return redirect('patient.index') 
-    
-    messages.success(request, 'Paciente editada com successo!')
+    if request.method != "POST": return redirect('patient.index')
+    try:
+        with transaction.atomic():
+            patientService.update(request)
+            messages.success(request, 'Paciente editada com successo!')
+    except Exception:
+        messages.error(request, 'Não foi possível realizar o edição!')
     return redirect('patient.index')
+    
 
 def delete(request):
     if request.method != "POST": return redirect('patient.index')
-    
-    messages.success(request, 'Paciente eliminada com successo!')
+    try:
+        with transaction.atomic():
+            patientService.hidden(request)
+            messages.success(request, 'Paciente eliminada com successo!')
+    except Exception:
+        messages.error(request, 'Não foi possível realizar o eliminação!')
     return redirect('patient.index')

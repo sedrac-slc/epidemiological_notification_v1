@@ -1,21 +1,21 @@
 from django.contrib.auth.models import User
+from django.utils import timezone
 from backend.entities.concrect.person import Person
-from backend.entities.concrect.doctor import Doctor
 from backend.utils.user import get_firstname, get_lastname
 
 # Parse request for objects model
 def user_request(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
-    username = get_lastname(request.POST.get('username'))
+    username = request.POST.get('username')
     last_name = get_lastname(request.POST.get('fullname'))
     first_name = get_firstname(request.POST.get('fullname'))
     data = User(
+        email = email,
+        password = password, 
         username = username, 
-        first_name = first_name, 
         last_name = last_name, 
-        password = password , 
-        email = email
+        first_name = first_name 
     )
     return data
 
@@ -31,11 +31,7 @@ def person_request(request, user):
     )
     return person
 
-def doctor_request(request, person):
-    doctor = Doctor(person = person)
-    return doctor
-
-# Persiste request in model
+# Create object request in model
 def create_user(request):
     user = user_request(request)
     user.save()
@@ -48,9 +44,35 @@ def create_person(request):
     person.save()
     return person
 
-def create_doctor(request):
-    person = create_person(request)
-    doctor = doctor_request(request, person)
-    doctor.concat_values_fields()
-    doctor.save()
-    return doctor
+# Update object request in model
+def update_user(request, model): 
+    user = user_request(request)
+    User.objects.filter(id = model.id).update(
+        last_name = user.last_name, 
+        first_name = user.first_name,
+    )
+    return user    
+
+def update_person(request, model): 
+    person = person_request(request, model.user)
+    person.concat_values_fields()
+    Person.objects.filter(id = model.id).update(
+        phone = person.phone,
+        gender = person.gender,
+        fullname = person.fullname,
+        birthday = person.birthday,
+        maritalStatus = person.maritalStatus,
+        identityCardNumber = person.identityCardNumber,
+        concat_fields = person.concat_fields,  
+        deleted_at = timezone.now()
+    )
+    return person
+
+# Hidden object request in model
+def hidden_user(model): 
+    User.objects.filter(id = model.id).update(is_active = False)
+    return model 
+
+def hidden_person(model):
+    Person.objects.filter(id = model.id).update(deleted_at = timezone.now())
+    return model     
