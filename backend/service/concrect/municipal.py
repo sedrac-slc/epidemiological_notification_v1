@@ -1,6 +1,9 @@
 from backend.entities.concrect.municipal import Municipal
+from backend.service.concrect.province import ProvinceService
 from backend.service.helper import paginator
 from django.utils import timezone
+
+provinceService = ProvinceService()
 
 class MunicipalService:
 
@@ -16,7 +19,8 @@ class MunicipalService:
         return data.first()
 
     def findAllByProvince(self, id):
-        data = Municipal.objects.filter(province = id, deleted_at__isnull=True, deleted_by__isnull=True)
+        province = provinceService.findById(id)
+        data = Municipal.objects.filter(province = province, deleted_at__isnull=True, deleted_by__isnull=True)
         return data.all()
         
     def save(self, data: Municipal):
