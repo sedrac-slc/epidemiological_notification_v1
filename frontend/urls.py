@@ -1,6 +1,6 @@
 from django.urls import path
 from frontend import views
-from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipal, permission, role
+from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, role
 
 urlpatterns = [
     # PAGES PUBLIC
@@ -28,11 +28,11 @@ urlpatterns = [
     path('province/update', province.update, name="province.update"),
     path('province/delete', province.delete, name="province.delete"),
     
-    path('municipal/', municipal.index, name="municipal.index"),
-    path('municipal/store', municipal.store, name="municipal.store"),
-    path('municipal/update', municipal.update, name="municipal.update"),
-    path('municipal/delete', municipal.delete, name="municipal.delete"), 
-    path('hx-municipal-province', municipal.province, name="municipal.getby-province"), 
+    path('municipality/', municipality.index, name="municipality.index"),
+    path('municipality/store', municipality.store, name="municipality.store"),
+    path('municipality/update', municipality.update, name="municipality.update"),
+    path('municipality/delete', municipality.delete, name="municipality.delete"), 
+    path('hx-municipality-province', municipality.province, name="municipality.getby-province"), 
     
     path('permission/', permission.index, name="permission.index"),
     

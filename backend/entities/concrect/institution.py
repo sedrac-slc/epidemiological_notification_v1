@@ -1,10 +1,10 @@
 from django.db import models
 from django.db.models import PROTECT
 from backend.entity import EntityCommon
-from .municipal import Municipal
+from .municipality import Municipality
 
 class Institution(EntityCommon):
-    municipal = models.OneToOneField(Municipal, on_delete = PROTECT)
+    municipality = models.OneToOneField(Municipality, on_delete = PROTECT)
     name = models.TextField(max_length=255)
     type = models.TextField(max_length=255)
     director = models.TextField(max_length=255)

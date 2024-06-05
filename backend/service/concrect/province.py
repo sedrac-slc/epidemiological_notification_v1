@@ -13,8 +13,15 @@ class ProvinceService:
         return paginator(request, data)
     
     def findById(self, id):
-        data = Province.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True)
-        return data.first()
+        return Province.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True).first()
+    
+    def findByName(self, name):
+        return Province.objects.filter(name = name, deleted_at__isnull=True, deleted_by__isnull=True).first()
+    
+    def findOrSave(self, data: Province):
+        province = self.findByName(data)
+        if province.id: return province
+        return self.save(data)
     
     def save(self, data: Province):
         data.concat_values_fields()

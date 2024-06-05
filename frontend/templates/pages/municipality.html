@@ -6,19 +6,19 @@
 {% endblock %}
 
 {% block 'tbody' %}
-    {% for municipal in data %}
+    {% for municipality in data %}
         <tr>
-            <td id="name-{{ forloop.counter0 }}">{{ municipal.name }}</td>
-            <td id="province-{{ forloop.counter0 }}" data-value="{{ municipal.province.id }}">
-                {{ municipal.province.name }}
+            <td id="name-{{ forloop.counter0 }}">{{ municipality.name }}</td>
+            <td id="province-{{ forloop.counter0 }}" data-value="{{ municipality.province.id }}">
+                {{ municipality.province.name }}
             </td>
-            {% include 'components/td-action.html' with data='municipal' index=forloop.counter0 model=municipal.id%}
+            {% include 'components/td-action.html' with data='municipality' index=forloop.counter0 model=municipality.id%}
         </tr>
     {% endfor %}
 {% endblock %}
 
 {% block 'modal' %}
-    {% include 'components/modal/form/municipal.html' with title="Formulário" %}
+    {% include 'components/modal/form/municipality.html' with title="Formulário" %}
 {% endblock %}
 
 {% block 'script' %}
