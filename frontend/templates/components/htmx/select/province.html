@@ -1,0 +1,7 @@
+{% include 'components/label.html' %}
+<select class="form-control border" id="{{ id|default:'' }}" name="{{ id|default:'' }}" value="{{ value|default:'' }}" required="{{ required|default:False }}"
+    hx-get="{% url 'municipal.getby-province' %}" hx-trigger="change" hx-target="#municipal" hx-swap="innerHTML" >
+    {% for province in provinces %}
+        <option value="{{ province.id }}"> {{ province.name }} </option>
+    {% endfor %}
+</select>

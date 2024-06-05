@@ -1,7 +1,7 @@
 {% extends "layouts/app.html" %}
 {% load static %}
 {% block link %} 
-    <link href="{% static 'css/elegant.style.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'theme/elegant/css/style.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/elegant.css' %}" rel="stylesheet"/>
     {% block 'link' %} {% endblock %} 
 {% endblock %}
@@ -69,7 +69,7 @@
             </div>
             <div class="sidebar-footer">
                 <a href="##" class="sidebar-user">
-                    {% include 'components/dashboard/picture-avatar.html' with img="img/avatar/avatar-illustrated-01" %}
+                    {% include 'components/dashboard/picture-avatar.html' with img="theme/elegant/img/avatar/avatar-illustrated-01" %}
                     <div class="sidebar-user-info">
                         <span class="sidebar-user__title">{{ site_name }}</span>
                         <span class="sidebar-user__subtitle">Equipa de Suporte</span>
@@ -113,7 +113,7 @@
                         <div class="nav-user-wrapper">
                             <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
                                 <span class="sr-only">Meu perfil</span>
-                                {% include 'components/dashboard/picture-avatar.html' with img="img/avatar/avatar-illustrated-02" %}
+                                {% include 'components/dashboard/picture-avatar.html' with img="theme/elegant/img/avatar/avatar-illustrated-02" %}
                             </button>
                             <ul class="users-item-dropdown nav-user-dropdown dropdown">
                                 {% include 'components/dashboard/nav-perfil-item.html' with text="Perfil" icon="user" %}
@@ -158,11 +158,11 @@
 
 {% block script %} 
 
-    <script src="{% static 'plugins/chart.min.js' %}"></script>
+    <script src="{% static 'theme/elegant/plugins/chart.min.js' %}"></script>
     <!-- Icons library -->
-    <script src="{% static 'plugins/feather.min.js' %}"></script>
+    <script src="{% static 'theme/elegant/plugins/feather.min.js' %}"></script>
     <!-- Custom scripts -->
-    <script src="{% static 'js/elegant.script.js' %}"></script>
+    <script src="{% static 'theme/elegant/js/script.js' %}"></script>
     
     <script src="{% static 'js/btn-action.js' %}"></script>
     

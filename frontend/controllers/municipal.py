@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
+from django.http import JsonResponse
+from django.core import serializers
 from backend.service.concrect.province import ProvinceService
 from backend.service.concrect.municipal import MunicipalService
 from backend.dto.municipal import to_municipal , to_municipal_model
@@ -39,3 +41,13 @@ def delete(request):
     municipalService.hidden(request.POST.get('model'))
     messages.success(request, 'Municipio eliminada com successo!')
     return redirect('municipal.index')    
+
+def province(request):
+    municipals = []
+    match request.method:
+        case "GET":
+            municipals = municipalService.findAllByProvince(request.GET.get('province'))
+        case "POST":
+            municipals = municipalService.findAllByProvince(request.POST.get('province'))
+    data = ''.join([f'<option value="{i.id}">{i.name}</option>' for i in municipals])
+    return JsonResponse(data, safe=False)

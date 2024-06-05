@@ -11,7 +11,13 @@
       {% include 'components/input.html' with label="Nome director:" icon="user" required=True %}
    </div>      
    <div class="col-md-6">
-      {% include 'components/input.html' with label="Localização:" icon="map" required=True %}
+      {% include 'components/input.html' with label="Localização:" icon="home" required=True %}
    </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/htmx/select/province.html' with label="Província:" id="province" icon="map" required=False  %}
+   </div>  
+   <div class="col-md-6 p-1">
+      {% include 'components/select/municipal.html' with label="Município:" id="municipal" icon="arrow-left" required=True  %}
+   </div>      
 </section>
 {% endblock %}

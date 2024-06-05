@@ -5,19 +5,21 @@
     
     <meta charset="UTF-8">
     <title>{% block title %} Alert {% endblock %}</title>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
     {% comment %} FontAwesome {% endcomment %}
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet"/>
-    {% block link %} {% endblock %}
 
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+    {% block link %} {% endblock %}
 </head>
 <body>
 
     {% block body %} {% endblock %}
 
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     {% comment %} FontAwesome {% endcomment %}
     <script src="{% static 'js/all.min.js' %}"></script>
+
+    <script src="{% static 'js/htmx.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
 
     {% block script %} {% endblock %}

@@ -1,0 +1,6 @@
+{% extends "slots/select.html" %}
+{% block 'option' %} 
+    {% for municipal in municipals %}
+        <option value="{{ municipal.id }}"> {{ municipal.name }} </option>
+    {% endfor %}
+{% endblock %}
