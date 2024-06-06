@@ -12,7 +12,7 @@
             <td id="province-{{ forloop.counter0 }}" data-value="{{ municipality.province.id }}">
                 {{ municipality.province.name }}
             </td>
-            {% include 'components/td-action.html' with data='municipality' index=forloop.counter0 model=municipality.id%}
+            {% include 'components/td-action.html' with data='municipality' index=forloop.counter0 model=municipality.id %}
         </tr>
     {% endfor %}
 {% endblock %}

@@ -57,6 +57,7 @@
 .main-panel .table-wrapper table,
 .main-panel .table-wrapper table.posts-table {
     width: max-content !important;
+    min-width: 1050px;
 }
 
 .main-panel .table-wrapper tbody tr{

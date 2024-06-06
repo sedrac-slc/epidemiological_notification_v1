@@ -1,4 +1,5 @@
 from backend.entities.concrect.municipality import Municipality
+from backend.entities.concrect.province import Province
 from .province import ProvinceData
 from enum import Enum
 
@@ -44,9 +45,7 @@ class MunicipalityData(Enum):
         Municipality(name="Cacongo", province=ProvinceData.CABINDA.value),
         # Municípios da província de Cuando-Cubango
         Municipality(name="Calai", province=ProvinceData.CUANDO_CUBANGO.value),
-        Municipality(
-            name="Cuito Cuanavale", province=ProvinceData.CUANDO_CUBANGO.value
-        ),
+        Municipality(name="Cuito Cuanavale", province=ProvinceData.CUANDO_CUBANGO.value),
         Municipality(name="Cuango", province=ProvinceData.CUANDO_CUBANGO.value),
         Municipality(name="Dirico", province=ProvinceData.CUANDO_CUBANGO.value),
         Municipality(name="Longa", province=ProvinceData.CUANDO_CUBANGO.value),
@@ -165,3 +164,11 @@ class MunicipalityData(Enum):
         Municipality(name="Songo", province=ProvinceData.ZAIRE.value),
         Municipality(name="Tomboco", province=ProvinceData.ZAIRE.value),
     ]
+
+    def get(data: Province):
+        list = []
+        for municipality in MunicipalityData.ALL.value:
+            if municipality.province.name == data.name:
+                municipality.province = data
+                list.append(municipality)
+        return list

@@ -2,16 +2,16 @@
 {% block 'body' %} 
 <section class="row">
    <div class="col-md-6">
-      {% include 'components/input.html' with label="Nome:" icon="file-text" required=True %}
+      {% include 'components/input.html' with label="Nome:" id="name" icon="file-text" required=True %}
    </div>
    <div class="col-md-6">
-      {% include 'components/input.html' with label="Tipo:" icon="type" required=True %}
+      {% include 'components/input.html' with label="Tipo:" id="group" icon="type" required=True %}
    </div>
    <div class="col-md-6">
-      {% include 'components/input.html' with label="Nome director:" icon="user" required=True %}
+      {% include 'components/input.html' with label="Nome director:" id="director" icon="user" required=True %}
    </div>      
    <div class="col-md-6">
-      {% include 'components/input.html' with label="Localização:" icon="home" required=True %}
+      {% include 'components/input.html' with label="Localização:" id="location" icon="home" required=True %}
    </div>
    <div class="col-md-6 p-1">
       {% include 'components/htmx/select/province.html' with label="Província:" id="province" icon="map" required=False  %}

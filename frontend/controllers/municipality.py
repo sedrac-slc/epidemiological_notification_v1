@@ -48,5 +48,5 @@ def province(request):
             municipals = municipalService.findAllByProvince(request.GET.get('province'))
         case "POST":
             municipals = municipalService.findAllByProvince(request.POST.get('province'))
-    data = ''.join([f'<option value="{i.id}">{i.name}</option>' for i in municipals])
+    data = ''.join([f'<option value={i.id}>{i.name}</option>' for i in municipals])
     return JsonResponse(data, safe=False)

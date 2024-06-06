@@ -19,6 +19,9 @@ class EntityCommon(models.Model):
     class Meta:
         abstract = True
 
+    def getId(self):
+        return self.id
+
     def concat_values_fields(self, parm):
         concatenated_parm = ";".join(parm)
         self.concat_fields = f"{self.id};{concatenated_parm};{self.created_at};{self.updated_at}"

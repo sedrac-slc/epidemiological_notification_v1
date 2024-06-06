@@ -19,13 +19,15 @@ class ProvinceService:
         return Province.objects.filter(name = name, deleted_at__isnull=True, deleted_by__isnull=True).first()
     
     def findOrSave(self, data: Province):
-        province = self.findByName(data)
-        if province.id: return province
+        province = self.findByName(data.name)
+        if province != None: 
+            return province
         return self.save(data)
     
     def save(self, data: Province):
         data.concat_values_fields()
-        return data.save()
+        data.save()
+        return data
     
     def update(self, data: Province):
         data.concat_values_fields()

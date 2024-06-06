@@ -15,17 +15,25 @@ class MunicipalityService:
         return paginator(request, data)
     
     def findById(self, id):
-        data = Municipality.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True)
-        return data.first()
+        return Municipality.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True).first()
+    
+    def findByName(self, name):
+        return Municipality.objects.filter(name = name, deleted_at__isnull=True, deleted_by__isnull=True).first()    
 
     def findAllByProvince(self, id):
         province = provinceService.findById(id)
-        data = Municipality.objects.filter(province = province, deleted_at__isnull=True, deleted_by__isnull=True)
-        return data.all()
+        return Municipality.objects.filter(province = province, deleted_at__isnull=True, deleted_by__isnull=True).all()
+    
+    def findOrSave(self, data: Municipality):
+        municipality = self.findByName(data.name)
+        if municipality != None: 
+            return municipality
+        return self.save(data)    
         
     def save(self, data: Municipality):
         data.concat_values_fields()
-        return data.save()
+        data.save()
+        return data
     
     def update(self, data: Municipality):
         data.concat_values_fields()

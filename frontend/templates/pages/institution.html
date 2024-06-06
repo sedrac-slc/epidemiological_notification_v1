@@ -5,20 +5,41 @@
     {% include 'components/th.html' with text='Tipo' icon="type" %}
     {% include 'components/th.html' with text='Director' icon="user" %}
     {% include 'components/th.html' with text='Localização' icon="map" %}
+    {% include 'components/th.html' with text='Provincia' icon="map" %}
+    {% include 'components/th.html' with text='Munícipio' icon="map" %}
 {% endblock %}
 
 {% block 'tbody' %}
     {% for institution in data %}
         <tr>
-            <td>{{ institution.name }}</td>
-            <td>{{ institution.type }}</td>
-            <td>{{ institution.director }}</td>
-            <td>{{ institution.location }}</td>
-            {% include 'components/td-action.html' with data='institution' %}
+            <td id="name-{{ forloop.counter0 }}">{{ institution.name }}</td>
+            <td id="group-{{ forloop.counter0 }}">{{ institution.group }}</td>
+            <td id="director-{{ forloop.counter0 }}">{{ institution.director }}</td>
+            <td id="location-{{ forloop.counter0 }}">{{ institution.location }}</td>
+            <td id="province-{{ forloop.counter0 }}" data-value="{{ institution.municipality.province.id }}">
+                {{ institution.municipality.province.name }}
+            </td>
+            <td id="municipality-{{ forloop.counter0 }}" data-value="{{ institution.municipality.id }}">
+                {{ institution.municipality.name }}
+            </td>            
+            {% include 'components/td-action.html' with data='institution' index=forloop.counter0 model=institution.id %}
         </tr>
     {% endfor %}
 {% endblock %}
 
 {% block 'modal' %}
     {% include 'components/modal/form/institution.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'name')
+            inputValueChange(item, 'group')
+            inputValueChange(item, 'director')
+            inputValueChange(item, 'location')
+            selectValueChange(item, 'province')
+            selectValueChange(item, 'municipality')
+        }
+    </script>
 {% endblock %}

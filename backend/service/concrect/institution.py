@@ -9,8 +9,7 @@ class InstitutionService:
         return paginator(request, data)
     
     def findById(self, id):
-        data = Institution.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True)
-        return data.first()
+        return Institution.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True).first()
     
     def save(self, data: Institution):
         data.concat_values_fields()
@@ -20,15 +19,15 @@ class InstitutionService:
         data.concat_values_fields()
         Institution.objects.filter(id = data.id).update(
             name = data.name, 
-            type = data.type,
+            group = data.group,
             director = data.director,
             location = data.location,
-            municipal = data.municipal,
-            concat_fields = data.concat_field
+            municipality = data.municipality,
+            concat_fields = data.concat_fields
         )
         return data
     
     def hidden(self, id):
         data = self.findById(id)
         Institution.objects.filter(id = data.id).update(deleted_at = timezone.now())
-        return data        
+        return data       

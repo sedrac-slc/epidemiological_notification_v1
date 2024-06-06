@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
+from django.http import HttpResponse
 from backend.service.concrect.province import ProvinceService
 from backend.service.concrect.institution import InstitutionService
 from backend.dto.institution import to_institution , to_institution_model
@@ -13,7 +14,7 @@ def index(request):
     data = institutionService.findAllPage(request)
     return render(request, "pages/institution.html", { 
         'data': data, 
-        'title': 'institution',
+        'title': 'Instituição',
         'provinces': provinces,
         'store': reverse('institution.store'),
         'update': reverse('institution.update'),
