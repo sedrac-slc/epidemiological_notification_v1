@@ -1,6 +1,6 @@
 from django.urls import path
 from frontend import views
-from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, role
+from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group
 
 urlpatterns = [
     # PAGES PUBLIC
@@ -11,7 +11,10 @@ urlpatterns = [
     # PAGES PRIVATE
     path('dashboard/', views.dashboard, name="dashboard"),
 
-    path('role/', role.index, name="role.index"),
+    path('group/', group.index, name="group.index"),
+    path('group/store', group.store, name="group.store"),
+    path('group/update', group.update, name="group.update"),
+    path('group/delete', group.delete, name="group.delete"),    
     
     path('doctor/', doctor.index, name="doctor.index"),
     path('doctor/store', doctor.store, name="doctor.store"),

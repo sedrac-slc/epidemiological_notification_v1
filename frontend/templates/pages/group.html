@@ -1,0 +1,26 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for group in data %}
+        <tr>
+            <td id="name-{{ forloop.counter0 }}">{{ group.name }}</td>
+            {% include 'components/td-action.html' with data='group' index=forloop.counter0 model=group.id %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/group.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'name')
+        }
+    </script>
+{% endblock %}

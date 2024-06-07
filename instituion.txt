@@ -1,6 +1,0 @@
-insert backend_instituion(name,type,director,location,concat_fields)
-values
-('Clínica Multiperfil','privado','João Lopez','Luanda, Morro Bento', 'Clínica Multiperfil+privado+João Lopez+Luanda, Morro Bento'),
-('Clínica MultiperfilA','privado','João Lopez','Luanda, Morro Bento', 'Clínica MultiperfilA+privado+João Lopez+Luanda, Morro Bento'),
-('Clínica MultiperfilB','privado','João Lopez','Luanda, Morro Bento', 'Clínica MultiperfilB+privado+João Lopez+Luanda, Morro Bento'),
-('Clínica MultiperfilC','privado','João Lopez','Luanda, Morro Bento', 'Clínica MultiperfilC+privado+João Lopez+Luanda, Morro Bento')
