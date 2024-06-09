@@ -4,9 +4,11 @@ from backend.service.helper import paginator
 
 class InstitutionService:
     
+    def list(self):
+        return Institution.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
+    
     def findAllPage(self, request):
-        data = Institution.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
-        return paginator(request, data)
+        return paginator(request, self.list())
     
     def findById(self, id):
         return Institution.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True).first()

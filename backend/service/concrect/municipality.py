@@ -7,12 +7,11 @@ provinceService = ProvinceService()
 
 class MunicipalityService:
 
-    def findAll(self, request):
+    def list(self):
         return Municipality.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
         
     def findAllPage(self, request):
-        data = self.findAll(request)
-        return paginator(request, data)
+        return paginator(request, self.list())
     
     def findById(self, id):
         return Municipality.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True).first()

@@ -41,7 +41,6 @@ def update(request):
         messages.error(request, 'Não foi possível realizar o edição!')
     return redirect('doctor.index')
     
-
 def delete(request):
     if request.method != "POST": return redirect('doctor.index')
     try:

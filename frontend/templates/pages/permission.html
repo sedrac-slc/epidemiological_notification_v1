@@ -3,6 +3,7 @@
 {% block 'thead' %}
     {% include 'components/th.html' with text='Código' icon="file-text" %}
     {% include 'components/th.html' with text='Nome' icon="file" %}
+    {% include 'components/th.html' with text='Grupos' icon="edit" colspan=2 %}
 {% endblock %}
 
 {% block 'tbody' %}
@@ -10,10 +11,33 @@
         <tr>
             <td>{{ permission.codename }}</td>
             <td>{{ permission.name }}</td>
+            {% include 'components/htmx/link/permission-group.html' with target="groupModal" model=permission.id counter=permission.group_set.count %}
         </tr>
     {% endfor %}
 {% endblock %}
 
 {% block 'modal' %}
-    
+    {% include 'components/modal/relationship/free.html' with title="Grupos" modal="groupModal" store="#" panel="group-body" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const groupModal = document.querySelector("#groupModal");
+        const linkGroupPlus = document.querySelectorAll('.link-group-plus');
+        const linkGroupList = document.querySelectorAll('.link-group-list');
+        const formGroup = groupModal.querySelector('form');
+
+        linkGroupPlus.forEach( item => {
+            item.addEventListener('click', (e) => {
+                formGroup.action = item.dataset.action
+            })
+        })
+
+        linkGroupList.forEach( item => {
+            item.addEventListener('click', (e) => {
+                formGroup.action = item.dataset.action  
+            })
+        })        
+
+    </script>
 {% endblock %}

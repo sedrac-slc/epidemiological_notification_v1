@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
-from django.http import JsonResponse
+from django.http import HttpResponse
+from django.utils.html import escape
 from backend.service.concrect.province import ProvinceService
 from backend.service.concrect.municipality import MunicipalityService
 from backend.dto.municipality import to_municipality , to_municipality_model
@@ -43,10 +44,9 @@ def delete(request):
 
 def province(request):
     municipals = []
-    match request.method:
-        case "GET":
-            municipals = municipalService.findAllByProvince(request.GET.get('province'))
-        case "POST":
-            municipals = municipalService.findAllByProvince(request.POST.get('province'))
-    data = ''.join([f'<option value={i.id}>{i.name}</option>' for i in municipals])
-    return JsonResponse(data, safe=False)
+    municipals = municipalService.findAllByProvince(request.GET.get('province'))
+    data = ''.join([
+        f'<option value="{escape(i.id)}" {"selected" if str(i.id) == request.GET.get('municipality') else ""}>{escape(i.name)}</option>'
+        for i in municipals
+    ])
+    return HttpResponse(data, content_type="text/html;charset=utf-8")

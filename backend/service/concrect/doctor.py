@@ -4,13 +4,11 @@ from backend.dto.doctor import create_doctor, update_doctor, hidden_doctor, find
 
 class DoctorService:
    
-    def findAll(self):
-        data = Doctor.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
-        return data
+    def list(self):
+       return Doctor.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
     
     def findAllPage(self, request):
-        data = self.findAll()
-        return paginator(request, data)
+        return paginator(request, self.list())
     
     def findById(self, id):
         return find_by_id(id)

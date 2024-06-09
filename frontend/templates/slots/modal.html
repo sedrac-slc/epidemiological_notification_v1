@@ -1,16 +1,22 @@
- <div class="modal fade" id="modalCrudAction" tabindex="-1" aria-labelledby="modalCrudActionLabel" aria-hidden="true">
+ <div class="modal fade" id="{{ modal|default:'modalCrudAction' }}" tabindex="-1" aria-labelledby="{{ modal|default:'modalCrudAction' }}Label" aria-hidden="true">
     <form {% if store %} action="{{ store }}" method="POST" {% endif %}  class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modalCrudActionLabel">{{ title }}</h1>
+          <h1 class="modal-title fs-5" id="{{ modal|default:'modalCrudAction' }}Label">{{ title }}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           {% block 'body' %} {% endblock %}
-          {% if store %} 
+          
+          {% if panel %} 
+            <div id="{{ panel }}"></div> 
+          {% endif %}
+          
+          {% if store or update or delete %} 
               {% csrf_token %}
               <input type="hidden" name="model" id="model" />
           {% endif %}
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">

@@ -22,7 +22,7 @@
             <td id="municipality-{{ forloop.counter0 }}" data-value="{{ institution.municipality.id }}">
                 {{ institution.municipality.name }}
             </td>            
-            {% include 'components/td-action.html' with data='institution' index=forloop.counter0 model=institution.id %}
+            {% include 'components/htmx/link/province-municipality.html' with data='institution' index=forloop.counter0 model=institution.id province=institution.municipality.province.id municipality=institution.municipality.id %}
         </tr>
     {% endfor %}
 {% endblock %}

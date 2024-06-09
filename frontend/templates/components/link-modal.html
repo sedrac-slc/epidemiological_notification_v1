@@ -1,4 +1,4 @@
-<a class="link-modal text-decoration-none {{ cls|default:'text-primary' }}" href="#" data-bs-toggle="modal" data-bs-target="#modalCrudAction" 
+<a class="link-modal text-decoration-none {{ cls|default:'text-primary' }}" href="#" data-bs-toggle="modal" data-bs-target="#{{ target|default:'modalCrudAction' }}" 
   data-index="{{ index }}" data-model="{{ model }}" data-action="{{ url }}" data-method="{{ method|default:'' }}">
   {% if icon %} <i data-feather="{{ icon }}" aria-hidden="true"></i> {% endif %}
   <span>{{ text|default:'' }}</span>

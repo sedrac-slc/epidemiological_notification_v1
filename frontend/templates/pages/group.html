@@ -2,12 +2,14 @@
 
 {% block 'thead' %}
     {% include 'components/th.html' with text='Nome' icon="file-text" %}
+    {% include 'components/th.html' with text='Permissões' icon="edit" colspan=2 %}
 {% endblock %}
 
 {% block 'tbody' %}
     {% for group in data %}
         <tr>
             <td id="name-{{ forloop.counter0 }}">{{ group.name }}</td>
+            {% include 'components/htmx/link/group-permission.html' with target="permissionModal" model=group.id counter=group.permissions.count %}
             {% include 'components/td-action.html' with data='group' index=forloop.counter0 model=group.id %}
         </tr>
     {% endfor %}
@@ -15,12 +17,29 @@
 
 {% block 'modal' %}
     {% include 'components/modal/form/group.html' with title="Formulário" %}
+    {% include 'components/modal/relationship/free.html' with title="Permissões" modal="permissionModal" store="#" panel="permission-body" %}
 {% endblock %}
 
 {% block 'script' %}
     <script>
-        const formChangeInputValues = (item) => {
-            inputValueChange(item, 'name')
-        }
+        const permissionModal = document.querySelector("#permissionModal");
+        const linkPermissionPlus = document.querySelectorAll('.link-permission-plus');
+        const linkPermissionList = document.querySelectorAll('.link-permission-list');
+        const formPermission = permissionModal.querySelector('form');
+
+        const formChangeInputValues = (item) => {inputValueChange(item, 'name')}
+
+        linkPermissionPlus.forEach( item => {
+            item.addEventListener('click', (e) => {
+                formPermission.action = item.dataset.action
+            })
+        })
+
+        linkPermissionList.forEach( item => {
+            item.addEventListener('click', (e) => {
+                formPermission.action = item.dataset.action  
+            })
+        })        
+
     </script>
 {% endblock %}

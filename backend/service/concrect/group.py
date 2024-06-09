@@ -1,15 +1,13 @@
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, Permission
 from backend.service.helper import paginator
 
 class GroupService:
    
-    def findAll(self):
-        data = Group.objects.all()
-        return data
+    def list(self):
+        return Group.objects.all()
     
     def findAllPage(self, request):
-        data = self.findAll()
-        return paginator(request, data)
+        return paginator(request, self.list())
     
     def findById(self, id):
         return Group.objects.filter(id = id).first()
@@ -22,16 +20,16 @@ class GroupService:
         if group != None: 
             return group
         return self.save(data)
-    
-    def save(self, data: Group):
-        data.save()
-        return data
+
+    def findInId(self,groupIds):
+        return Group.objects.filter(id__in=groupIds).all()
+
+    def findNotInPermission(self, permission_id):
+        permission = Permission.objects.get(id=permission_id)
+        permission_group_ids = permission.group_set.values_list('id', flat=True)
+        groups_not_in_permission = Group.objects.exclude(id__in=permission_group_ids)
+        return groups_not_in_permission   
     
     def update(self, data: Group):
         Group.objects.filter(id = data.id).update(name = data.name)
         return data
-    
-    def delete(self, id):
-        data = self.findById(id)
-        data.delete()
-        return data    

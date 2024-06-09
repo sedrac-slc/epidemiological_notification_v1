@@ -1,0 +1,20 @@
+{% if update %}
+  <td>
+    <a class="link-modal text-decoration-none text-warning btn-update" href="#" data-bs-toggle="modal" data-bs-target="#{{ target|default:'modalCrudAction' }}" 
+      data-index="{{ index }}" data-model="{{ model }}" data-action="{{ update }}" data-method="update"
+      hx-get="{% url 'municipality.getby-province' %}?province={{ province }}&municipality={{ municipality }}" hx-trigger="click" hx-target="#municipality" hx-swap="innerHTML">
+       <i data-feather="edit" aria-hidden="true"></i> 
+      <span>editar</span>
+    </a>    
+  </td>
+{% endif %}
+{% if delete %}
+  <td>
+    <a class="link-modal text-decoration-none text-danger btn-delete" href="#" data-bs-toggle="modal" data-bs-target="#{{ target|default:'modalCrudAction' }}" 
+      data-index="{{ index }}" data-model="{{ model }}" data-action="{{ delete }}" data-method="delete"
+      hx-get="{% url 'municipality.getby-province' %}?province={{ province }}&municipality={{ municipality }}" hx-trigger="click" hx-target="#municipality" hx-swap="innerHTML">
+       <i data-feather="trash" aria-hidden="true"></i> 
+      <span>eliminar</span>
+    </a>     
+  </td>
+{% endif %}

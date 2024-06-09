@@ -19,4 +19,13 @@ criando as migrate no banco de dados
 criando um usuario super para aréa administrativa do django
 9- python manage.py createsuperuser
 
+populando a base dados com informações
+10- python manage.py seed
+
 pip install django-role-permissions
+
+
+def item_list(request):
+    items = Item.objects.all().values()  # Converte o QuerySet em uma lista de dicionários
+    items_list = list(items)  # Converte o QuerySet de dicionários em uma lista
+    return JsonResponse(items_list, safe=False)
