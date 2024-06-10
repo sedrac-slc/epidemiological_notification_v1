@@ -44,9 +44,10 @@ def delete(request):
 
 def province(request):
     municipals = []
+    municipality = request.GET.get('municipality','')
     municipals = municipalService.findAllByProvince(request.GET.get('province'))
     data = ''.join([
-        f'<option value="{escape(i.id)}" {"selected" if str(i.id) == request.GET.get('municipality') else ""}>{escape(i.name)}</option>'
+        f'<option value="{escape(i.id)}" {"selected" if str(i.id) == escape(municipality) else ""}>{escape(i.name)}</option>'
         for i in municipals
     ])
     return HttpResponse(data, content_type="text/html;charset=utf-8")

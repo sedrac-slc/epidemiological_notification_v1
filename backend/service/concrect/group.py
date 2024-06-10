@@ -29,7 +29,11 @@ class GroupService:
         permission_group_ids = permission.group_set.values_list('id', flat=True)
         groups_not_in_permission = Group.objects.exclude(id__in=permission_group_ids)
         return groups_not_in_permission   
-    
+
+    def save(self, data: Group):
+        data.save()
+        return data
+
     def update(self, data: Group):
         Group.objects.filter(id = data.id).update(name = data.name)
         return data
