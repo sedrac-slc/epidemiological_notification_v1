@@ -7,9 +7,9 @@ class ProvinceData(Enum):
     BENGUELA = Province(name="Benguela")
     BIE = Province(name="Bié")
     CABINDA = Province(name="Cabinda")
-    CUANDO_CUBANGO = Province(name="Cuando-Cubango")
-    CUANZA_NORTE = Province(name="Cuanza Norte")
-    CUANZA_SUL = Province(name="Cuanza Sul")
+    KUANDO_CUBANGO = Province(name="Kuando-Cubango")
+    KUANZA_NORTE = Province(name="Kuanza Norte")
+    KUANZA_SUL = Province(name="Kuanza Sul")
     CUNENE = Province(name="Cunene")
     HUAMBO = Province(name="Huambo")
     HUILA = Province(name="Huíla")
@@ -23,7 +23,7 @@ class ProvinceData(Enum):
     ZAIRE = Province(name="Zaire")
     
     ALL = [
-        BENGO, BENGUELA, BIE, CABINDA, CUANDO_CUBANGO, CUANZA_NORTE, CUANZA_SUL, CUNENE,
+        BENGO, BENGUELA, BIE, CABINDA, KUANDO_CUBANGO, KUANZA_NORTE, KUANZA_SUL, CUNENE,
         HUAMBO, HUILA, LUANDA, LUNDA_NORTE, LUNDA_SUL, MALANJE, MOXICO, NAMIBE, UIGE, ZAIRE
     ]
  

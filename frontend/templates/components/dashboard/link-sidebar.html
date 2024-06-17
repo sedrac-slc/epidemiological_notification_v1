@@ -1,5 +1,9 @@
 <a {% if active|default:False %}  class="active" {% endif %}
    {% if href %}  href="{% url href %}" {% else %} href="#" {% endif %} >
-    <span class="{{ icon|default:'icon home' }}" aria-hidden="true"></span>
+   {% if type == "featcher" %}
+        <i style="margin-right: 10px;" data-feather="{{ icon|default:'search' }}" aria-hidden="true"></i>
+   {% else %}
+        <span class="{{ icon|default:'icon home' }}" aria-hidden="true"></span>
+    {% endif %}
     <span>{{ text|default:'Link' }}</span>
 </a>

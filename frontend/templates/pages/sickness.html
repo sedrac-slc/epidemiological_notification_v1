@@ -1,0 +1,26 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for scickness in data %}
+        <tr>
+            <td id="name-{{ forloop.counter0 }}">{{ scickness.name }}</td>
+            {% include 'components/td-action.html' with data='scickness' index=forloop.counter0 model=scickness.id %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/scickness.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'name')
+        }
+    </script>
+{% endblock %}

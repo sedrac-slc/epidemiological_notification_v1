@@ -1,6 +1,6 @@
 from django.urls import path
 from frontend import views
-from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group
+from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness
 
 #routes views
 urlpatterns = [
@@ -51,7 +51,12 @@ urlpatterns = [
     path('laboratory_technician/', laboratory_technician.index, name="laboratory_technician.index"),
     path('laboratory_technician/store', laboratory_technician.store, name="laboratory_technician.store"),
     path('laboratory_technician/update', laboratory_technician.update, name="laboratory_technician.update"),
-    path('laboratory_technician/delete', laboratory_technician.delete, name="laboratory_technician.delete"),       
+    path('laboratory_technician/delete', laboratory_technician.delete, name="laboratory_technician.delete"),
+    
+    path('sickness/', sickness.index, name="sickness.index"),
+    path('sickness/store', sickness.store, name="sickness.store"),
+    path('sickness/update', sickness.update, name="sickness.update"),
+    path('sickness/delete', sickness.delete, name="sickness.delete"),       
 ]
 
 #route ajax (htmx)
