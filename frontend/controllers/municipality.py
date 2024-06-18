@@ -29,7 +29,6 @@ def store(request):
     messages.success(request, 'Municipio cadastrada com successo!')
     return redirect('municipality.index')
    
-
 def update(request):
     if request.method != "POST": return redirect('municipal.index') 
     municipalService.update(to_municipality_model(request))
