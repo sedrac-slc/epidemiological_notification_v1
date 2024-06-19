@@ -1,6 +1,6 @@
 from django.urls import path
 from frontend import views
-from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness
+from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_record
 
 #routes views
 urlpatterns = [
@@ -13,15 +13,11 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name="dashboard"),
     
     path('permission/', permission.index, name="permission.index"),
-    path('permission-group-plus/<int:id>', permission.group_plus, name="permission.group_plus"),
-    path('permission-group-list/<int:id>', permission.group_list, name="permission.group_list"),  
 
     path('group/', group.index, name="group.index"),
     path('group/store', group.store, name="group.store"),
     path('group/update', group.update, name="group.update"),
-    path('group/delete', group.delete, name="group.delete"),
-    path('group-permission-plus/<int:id>', group.permission_plus, name="group.permission_plus"),
-    path('group-permission-list/<int:id>', group.permission_list, name="group.permission_list"),    
+    path('group/delete', group.delete, name="group.delete"),   
     
     path('doctor/', doctor.index, name="doctor.index"),
     path('doctor/store', doctor.store, name="doctor.store"),
@@ -56,7 +52,12 @@ urlpatterns = [
     path('sickness/', sickness.index, name="sickness.index"),
     path('sickness/store', sickness.store, name="sickness.store"),
     path('sickness/update', sickness.update, name="sickness.update"),
-    path('sickness/delete', sickness.delete, name="sickness.delete"),       
+    path('sickness/delete', sickness.delete, name="sickness.delete"),     
+
+    path('medical_record/', medical_record.index, name="medical_record.index"),
+    path('medical_record/store', medical_record.store, name="medical_record.store"),
+    path('medical_record/update', medical_record.update, name="medical_record.update"),
+    path('medical_record/delete', medical_record.delete, name="medical_record.delete"),        
 ]
 
 #route ajax (htmx)
@@ -68,5 +69,15 @@ urlpatterns += [
     path('hx-group-plus/<int:id>/', permission.plus, name="group.plus"),
     path('hx-group-list/<int:id>/', permission.lists, name="group.list"), 
             
-    path('hx-municipality-province', municipality.province, name="municipality.getby-province"), 
+    path('hx-municipality-province', municipality.province, name="municipality.getby-province"),
+    path('hx-sickness-province', medical_record.sickness, name="medical_record.getby-sickness"), 
+]
+
+#route relanshiep
+urlpatterns += [
+    path('permission-group-plus/<int:id>', permission.group_plus, name="permission.group_plus"),
+    path('permission-group-list/<int:id>', permission.group_list, name="permission.group_list"),  
+
+    path('group-permission-plus/<int:id>', group.permission_plus, name="group.permission_plus"),
+    path('group-permission-list/<int:id>', group.permission_list, name="group.permission_list"), 
 ]

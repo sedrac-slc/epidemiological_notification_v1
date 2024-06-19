@@ -1,0 +1,31 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+    {% include 'components/th.html' with text='Pronvíncia' icon="map" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for medicalRecord in data %}
+        <tr>
+            <td id="name-{{ forloop.counter0 }}">{{ medicalRecord.name }}</td>
+            <td id="sickness-{{ forloop.counter0 }}" data-value="{{ medicalRecord.sickness.id }}">
+                {{ medicalRecord.sickness.name }}
+            </td>
+            {% include 'components/td-action.html' with data='medicalRecord' index=forloop.counter0 model=medicalRecord.id %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/medical-record.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'name')
+            selectValueChange(item, 'sickness')
+        }
+    </script>
+{% endblock %}

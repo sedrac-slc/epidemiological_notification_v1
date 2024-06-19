@@ -20,7 +20,7 @@ class Command(BaseCommand):
         sicknesies = SicknessData.ALL.value
 
         for sicknes in sicknesies:
-            sicknessService.findOrSave(sicknes)
+            sicknessService.findOrSave(sicknes) 
 
         for group in groups:
             group = groupService.findOrSave(group)

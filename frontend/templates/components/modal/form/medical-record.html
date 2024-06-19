@@ -1,0 +1,11 @@
+{% extends "slots/modal.html" %}
+{% block 'body' %} 
+<section class="row">
+   <div class="col-md-6 p-1">
+      {% include 'components/input.html' with label="Nome:" id="name" icon="file-text" required=True %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/select/sickness.html' with label="Doença:" id="sickness" icon="map" required=True  %}
+   </div>   
+</section>
+{% endblock %}
