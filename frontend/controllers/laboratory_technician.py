@@ -3,18 +3,22 @@ from django.contrib import messages
 from django.urls import reverse
 from django.db import transaction
 from backend.entities.concrect.person import genders, maritalStatus
+from backend.service.concrect.institution import InstitutionService
 from backend.service.concrect.laboratory_technician import LaboratoryTechnicianService
 
+institutionService = InstitutionService()
 laboratoryTechnicianService = LaboratoryTechnicianService()
 
 # Create your views here.
 def index(request):
+    institutions = institutionService.findAll()
     data = laboratoryTechnicianService.findAllPage(request)
     return render(request, "pages/laboratory-technician.html", { 
         'data': data,
         'title': 'Técnicos de laboratórios',
         'genders': genders(),
-        'maritalStatus' : maritalStatus(),
+        'maritalStatus': maritalStatus(),
+        'institutions': institutions,
         'store': reverse('laboratory_technician.store'),
         'update': reverse('laboratory_technician.update'),
         'delete': reverse('laboratory_technician.delete') 

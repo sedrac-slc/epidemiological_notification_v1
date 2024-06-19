@@ -7,12 +7,24 @@ class InstitutionService:
     def list(self):
         return Institution.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
     
+    def findAll(self):
+        return self.list().all()    
+    
     def findAllPage(self, request):
         return paginator(request, self.list())
     
     def findById(self, id):
         return Institution.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True).first()
     
+    def findByName(self, name):
+        return Institution.objects.filter(name = name, deleted_at__isnull=True, deleted_by__isnull=True).first()    
+
+    def findOrSave(self, data: Institution):
+        institution = self.findByName(data.name)
+        if institution != None: 
+            return institution
+        return self.save(data)    
+
     def save(self, data: Institution):
         data.concat_values_fields()
         return data.save()

@@ -4,17 +4,21 @@ from django.urls import reverse
 from django.db import transaction
 from backend.entities.concrect.person import genders, maritalStatus
 from backend.service.concrect.doctor import DoctorService
+from backend.service.concrect.institution import InstitutionService
 
 doctorService = DoctorService()
+institutionService = InstitutionService()
 
 # Create your views here.
 def index(request):
+    institutions = institutionService.findAll()
     data = doctorService.findAllPage(request)
     return render(request, "pages/doctor.html", { 
         'data': data,
         'title': 'Médico',
         'genders': genders(),
-        'maritalStatus' : maritalStatus(),
+        'maritalStatus': maritalStatus(),
+        'institutions': institutions,
         'store': reverse('doctor.store'),
         'update': reverse('doctor.update'),
         'delete': reverse('doctor.delete') 

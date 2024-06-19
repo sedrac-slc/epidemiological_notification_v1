@@ -5,7 +5,7 @@ from .municipality import Municipality
 
 class Institution(EntityCommon):
     municipality = models.ForeignKey(Municipality, on_delete = PROTECT)
-    name = models.TextField(max_length=255)
+    name = models.TextField(max_length=255, unique=True)
     group = models.TextField(max_length=255)
     director = models.TextField(max_length=255)
     location = models.TextField(max_length=255)

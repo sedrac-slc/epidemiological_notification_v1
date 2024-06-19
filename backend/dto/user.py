@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.utils import timezone
 from backend.entities.concrect.person import Person
+from backend.entities.concrect.institution import Institution
 from backend.utils.user import get_firstname, get_lastname
 
 # Parse request for objects model
@@ -27,6 +28,7 @@ def person_request(request, user):
         fullname = request.POST.get('fullname'),
         birthday = request.POST.get('birthday'),
         maritalStatus = request.POST.get('maritalStatus'),
+        institution = Institution(request.POST.get('institution')),
         identityCardNumber = request.POST.get('identityCardNumber'),
     )
     return person
