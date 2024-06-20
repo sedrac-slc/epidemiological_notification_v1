@@ -13,7 +13,7 @@ def maritalStatus():
 # Create your models here.
 class Person(EntityCommon):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    institution = models.OneToOneField(Institution, on_delete = models.CASCADE)
+    institution = models.ForeignKey(Institution, on_delete = models.CASCADE)
     fullname = models.TextField(max_length=100)
     identityCardNumber = models.TextField(max_length=100, unique= True)
     phone = models.TextField(max_length=100, null=True, blank=True)

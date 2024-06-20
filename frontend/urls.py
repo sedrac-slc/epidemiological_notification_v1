@@ -81,3 +81,8 @@ urlpatterns += [
     path('group-permission-plus/<int:id>', group.permission_plus, name="group.permission_plus"),
     path('group-permission-list/<int:id>', group.permission_list, name="group.permission_list"), 
 ]
+
+#route editor
+urlpatterns += [
+    
+]

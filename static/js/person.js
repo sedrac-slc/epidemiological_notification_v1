@@ -29,6 +29,7 @@ const formChangeInputValues = (item) => {
     inputValueChange(item, 'email')
 
     selectValueChange(item, 'maritalStatus')
+    selectValueChange(item, 'institution')
     selectValueChange(item, 'gender')
     
     if(item.dataset.method == METHOD_UPDATE || item.dataset.method == METHOD_DELETE) {

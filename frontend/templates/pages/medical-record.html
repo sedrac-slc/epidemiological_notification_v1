@@ -2,16 +2,21 @@
 
 {% block 'thead' %}
     {% include 'components/th.html' with text='Nome' icon="file-text" %}
-    {% include 'components/th.html' with text='Pronvíncia' icon="map" %}
+    {% include 'components/th.html' with text='Doença' icon="map" %}
+    {% include 'components/th.html' with text='Editor' icon="layout" colspan=2 %}
 {% endblock %}
 
 {% block 'tbody' %}
     {% for medicalRecord in data %}
         <tr>
             <td id="name-{{ forloop.counter0 }}">{{ medicalRecord.name }}</td>
-            <td id="sickness-{{ forloop.counter0 }}" data-value="{{ medicalRecord.sickness.id }}">
-                {{ medicalRecord.sickness.name }}
+            <td id="sickness-{{ forloop.counter0 }}" data-value="{{ medicalRecord.sickness.id }}">{{ medicalRecord.sickness.name }}</td>
+            <td>
+                {% include 'components/link-modal.html' with text='Abrir' cls='text-info ' icon='eye'  %}
             </td>
+            <td>
+                {% include 'components/link-modal.html' with text='Exibição' cls='text-primary ' icon='layout'  %}
+            </td>            
             {% include 'components/td-action.html' with data='medicalRecord' index=forloop.counter0 model=medicalRecord.id %}
         </tr>
     {% endfor %}

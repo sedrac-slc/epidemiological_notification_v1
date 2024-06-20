@@ -5,15 +5,21 @@ from enum import Enum
 
 
 class MunicipalityData(Enum):
+    BENGUELA = Municipality(name="Benguela", province=ProvinceData.BENGUELA.value)
+    KILAMBA_KIAXI = Municipality(name="Kilamba Kiaxi", province=ProvinceData.LUANDA.value)
+    SAMBA = Municipality(name="Samba", province=ProvinceData.LUANDA.value)
+    HUAMBO =  Municipality(name="Huambo", province=ProvinceData.HUAMBO.value)
+
     ALL = [
         # Municípios da província de Luanda
         Municipality(name="Talatona", province=ProvinceData.LUANDA.value),
         Municipality(name="Belas", province=ProvinceData.LUANDA.value),
+        SAMBA,
         Municipality(name="Cacuaco", province=ProvinceData.LUANDA.value),
         Municipality(name="Cazenga", province=ProvinceData.LUANDA.value),
         Municipality(name="Viana", province=ProvinceData.LUANDA.value),
         Municipality(name="Ícolo e Bengo", province=ProvinceData.LUANDA.value),
-        Municipality(name="Kilamba Kiaxi", province=ProvinceData.LUANDA.value),
+        KILAMBA_KIAXI,
         Municipality(name="Luanda", province=ProvinceData.LUANDA.value),
         Municipality(name="Quiçama", province=ProvinceData.LUANDA.value),
         # Municípios da província de Bengo
@@ -26,7 +32,7 @@ class MunicipalityData(Enum):
         # Municípios da província de Benguela
         Municipality(name="Balombo", province=ProvinceData.BENGUELA.value),
         Municipality(name="Baía Farta", province=ProvinceData.BENGUELA.value),
-        Municipality(name="Benguela", province=ProvinceData.BENGUELA.value),
+        BENGUELA,
         Municipality(name="Bocoio", province=ProvinceData.BENGUELA.value),
         Municipality(name="Caimbambo", province=ProvinceData.BENGUELA.value),
         Municipality(name="Catumbela", province=ProvinceData.BENGUELA.value),
@@ -99,7 +105,7 @@ class MunicipalityData(Enum):
         Municipality(name="Caála", province=ProvinceData.HUAMBO.value),
         Municipality(name="Catchiungo", province=ProvinceData.HUAMBO.value),
         Municipality(name="EKunha", province=ProvinceData.HUAMBO.value),
-        Municipality(name="Huambo", province=ProvinceData.HUAMBO.value),
+        HUAMBO,
         Municipality(name="Londuimbali", province=ProvinceData.HUAMBO.value),
         Municipality(name="Longonjo", province=ProvinceData.HUAMBO.value),
         Municipality(name="Munhango", province=ProvinceData.HUAMBO.value), 

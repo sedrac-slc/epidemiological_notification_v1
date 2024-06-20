@@ -1,29 +1,13 @@
 {% extends "layouts/dashboard.html" %}
 {% load static %}
 {% block 'thead' %}
-    {% include 'components/th.html' with text='Nome' icon="file-text" %}
-    {% include 'components/th.html' with text='Bilhete' icon="file" %}
-    {% include 'components/th.html' with text='Email' icon="mail" %}
-    {% include 'components/th.html' with text='Nascimento' icon="calendar" %}
-    {% include 'components/th.html' with text='Gênero' icon="users" %}
-    {% include 'components/th.html' with text='Estado' icon="user" %}
-    {% include 'components/th.html' with text='Telefone' icon="phone" %}
+    {% include 'components/person/td-thead.html' %}
 {% endblock %}
 
 {% block 'tbody' %}
     {% for laboratoryTechnician in data %}
         <tr>
-            <td id="fullname-{{ forloop.counter0 }}">{{ laboratoryTechnician.person.fullname }}</td>
-            <td id="identityCardNumber-{{ forloop.counter0 }}">{{ laboratoryTechnician.person.identityCardNumber }}</td>
-            <td id="email-{{ forloop.counter0 }}">{{ laboratoryTechnician.person.user.email }}</td>
-            <td id="birthday-{{ forloop.counter0 }}">{{ laboratoryTechnician.person.birthday|date:"Y-m-d" }}</td>
-            <td id="gender-{{ forloop.counter0 }}" data-value="{{ laboratoryTechnician.person.gender }}">
-                {{ laboratoryTechnician.person.gender }}
-            </td>
-            <td id="maritalStatus-{{ forloop.counter0 }}" data-value="{{ laboratoryTechnician.person.maritalStatus }}">
-                {{ laboratoryTechnician.person.maritalStatus }}
-            </td>            
-            <td id="phone-{{ forloop.counter0 }}">{{ laboratoryTechnician.person.phone }}</td>
+            {% include 'components/person/td-tody.html' with info=laboratoryTechnician index=forloop.counter0 %}        
             {% include 'components/td-action.html' with data='laboratoryTechnician' data='laboratoryTechnician' index=forloop.counter0 model=laboratoryTechnician.id %}
         </tr>
     {% endfor %}
