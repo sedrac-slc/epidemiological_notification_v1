@@ -14,7 +14,7 @@ class EntityCommon(models.Model):
     deleted_at = models.DateTimeField(null=True, blank=True)
     deleted_by = models.UUIDField(null=True, blank=True)
 
-    concat_fields = models.TextField(unique=True)
+    concat_fields = models.TextField(null=True, blank=True)
     
     class Meta:
         abstract = True

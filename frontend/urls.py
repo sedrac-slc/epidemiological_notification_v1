@@ -1,19 +1,19 @@
 from django.urls import path
 from frontend import views
-from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_record, medical_appointment, consultation_type
+from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_record, medical_appointment, consultation_type, payment_method
 
 #routes views
 urlpatterns = [
-    # PAGES PUBLIC
     path('', views.index, name="home"),
     path('login/', views.login, name="login"),
     path('register/', views.register, name="register"),
-    
-    # PAGES PRIVATE
     path('dashboard/', views.dashboard, name="dashboard"),
-    
     path('permission/', permission.index, name="permission.index"),
+]
 
+
+urlpatterns += [
+    
     path('group/', group.index, name="group.index"),
     path('group/store', group.store, name="group.store"),
     path('group/update', group.update, name="group.update"),
@@ -33,52 +33,55 @@ urlpatterns = [
     path('province/store', province.store, name="province.store"),
     path('province/update', province.update, name="province.update"),
     path('province/delete', province.delete, name="province.delete"),
-    
-    path('municipality/', municipality.index, name="municipality.index"),
-    path('municipality/store', municipality.store, name="municipality.store"),
-    path('municipality/update', municipality.update, name="municipality.update"),
-    path('municipality/delete', municipality.delete, name="municipality.delete"), 
-    
-    path('institution/', institution.index, name="institution.index"),
-    path('institution/store', institution.store, name="institution.store"),
-    path('institution/update', institution.update, name="institution.update"),
-    path('institution/delete', institution.delete, name="institution.delete"),          
-    
-    path('laboratory_technician/', laboratory_technician.index, name="laboratory_technician.index"),
-    path('laboratory_technician/store', laboratory_technician.store, name="laboratory_technician.store"),
-    path('laboratory_technician/update', laboratory_technician.update, name="laboratory_technician.update"),
-    path('laboratory_technician/delete', laboratory_technician.delete, name="laboratory_technician.delete"),
-    
+
     path('sickness/', sickness.index, name="sickness.index"),
     path('sickness/store', sickness.store, name="sickness.store"),
     path('sickness/update', sickness.update, name="sickness.update"),
     path('sickness/delete', sickness.delete, name="sickness.delete"),     
 
+    path('institution/', institution.index, name="institution.index"),
+    path('institution/store', institution.store, name="institution.store"),
+    path('institution/update', institution.update, name="institution.update"),
+    path('institution/delete', institution.delete, name="institution.delete"),
+        
+    path('municipality/', municipality.index, name="municipality.index"),
+    path('municipality/store', municipality.store, name="municipality.store"),
+    path('municipality/update', municipality.update, name="municipality.update"),
+    path('municipality/delete', municipality.delete, name="municipality.delete"), 
+
+    path('payment_method/', payment_method.index, name="payment_method.index"),
+    path('payment_method/store', payment_method.store, name="payment_method.store"),
+    path('payment_method/update', payment_method.update, name="payment_method.update"),
+    path('payment_method/delete', payment_method.delete, name="payment_method.delete"),
+    
     path('medical_record/', medical_record.index, name="medical_record.index"),
     path('medical_record/store', medical_record.store, name="medical_record.store"),
     path('medical_record/update', medical_record.update, name="medical_record.update"),
     path('medical_record/delete', medical_record.delete, name="medical_record.delete"), 
+
+    path('consultation_type/', consultation_type.index, name="consultation_type.index"),
+    path('consultation_type/store', consultation_type.store, name="consultation_type.store"),
+    path('consultation_type/update', consultation_type.update, name="consultation_type.update"),
+    path('consultation_type/delete', consultation_type.delete, name="consultation_type.delete"),
 
     path('medical_appointment/', medical_appointment.index, name="medical_appointment.index"),
     path('medical_appointment/store', medical_appointment.store, name="medical_appointment.store"),
     path('medical_appointment/update', medical_appointment.update, name="medical_appointment.update"),
     path('medical_appointment/delete', medical_appointment.delete, name="medical_appointment.delete"),
     
-    path('consultation_type/', consultation_type.index, name="consultation_type.index"),
-    path('consultation_type/store', consultation_type.store, name="consultation_type.store"),
-    path('consultation_type/update', consultation_type.update, name="consultation_type.update"),
-    path('consultation_type/delete', consultation_type.delete, name="consultation_type.delete"),            
+    path('laboratory_technician/', laboratory_technician.index, name="laboratory_technician.index"),
+    path('laboratory_technician/store', laboratory_technician.store, name="laboratory_technician.store"),
+    path('laboratory_technician/update', laboratory_technician.update, name="laboratory_technician.update"),
+    path('laboratory_technician/delete', laboratory_technician.delete, name="laboratory_technician.delete"),
+                                
 ]
 
 #route ajax (htmx)
 urlpatterns += [
-    
-    path('hx-permission-plus/<int:id>/', group.plus, name="permission.plus"),
-    path('hx-permission-list/<int:id>/', group.lists, name="permission.list"),
-    
     path('hx-group-plus/<int:id>/', permission.plus, name="group.plus"),
     path('hx-group-list/<int:id>/', permission.lists, name="group.list"), 
-            
+    path('hx-permission-plus/<int:id>/', group.plus, name="permission.plus"),
+    path('hx-permission-list/<int:id>/', group.lists, name="permission.list"),
     path('hx-municipality-province', municipality.province, name="municipality.getby-province"),
     path('hx-sickness-province', medical_record.sickness, name="medical_record.getby-sickness"), 
 ]
@@ -87,7 +90,6 @@ urlpatterns += [
 urlpatterns += [
     path('permission-group-plus/<int:id>', permission.group_plus, name="permission.group_plus"),
     path('permission-group-list/<int:id>', permission.group_list, name="permission.group_list"),  
-
     path('group-permission-plus/<int:id>', group.permission_plus, name="group.permission_plus"),
     path('group-permission-list/<int:id>', group.permission_list, name="group.permission_list"), 
 ]

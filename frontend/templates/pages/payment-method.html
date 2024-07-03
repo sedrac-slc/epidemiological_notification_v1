@@ -1,0 +1,26 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for payment_method in data %}
+        <tr>
+            <td id="name-{{ forloop.counter0 }}">{{ payment_method.name }}</td>
+            {% include 'components/td-action.html' with data='payment_method' index=forloop.counter0 model=payment_method.id %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/payment-method.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'name')
+        }
+    </script>
+{% endblock %}

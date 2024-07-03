@@ -5,12 +5,10 @@ from backend.dto.patient import create_patient, update_patient, hidden_patient, 
 class PatientService:
    
     def findAll(self):
-        data = Patient.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
-        return data
+        return Patient.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
     
     def findAllPage(self, request):
-        data = self.findAll()
-        return paginator(request, data)
+        return paginator(request, self.findAll())
     
     def findById(self, id):
         return find_by_id(id)

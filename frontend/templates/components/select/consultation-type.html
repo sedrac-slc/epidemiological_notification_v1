@@ -1,0 +1,6 @@
+{% extends "slots/select.html" %}
+{% block 'option' %} 
+    {% for consultation_type in consultation_types %}
+        <option value="{{ consultation_type.id }}"> {{ consultation_type.name }} - {{ consultation_type.price  }} </option>
+    {% endfor %}
+{% endblock %}

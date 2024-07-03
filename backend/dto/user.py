@@ -11,17 +11,16 @@ def user_request(request):
     username = request.POST.get('username')
     last_name = get_lastname(request.POST.get('fullname'))
     first_name = get_firstname(request.POST.get('fullname'))
-    data = User(
+    return User(
         email = email,
         password = password, 
         username = username, 
         last_name = last_name, 
         first_name = first_name 
     )
-    return data
 
 def person_request(request, user):
-    person = Person(
+    return Person(
         user = user,
         phone = request.POST.get('phone'),
         gender = request.POST.get('gender'),
@@ -31,7 +30,6 @@ def person_request(request, user):
         institution = Institution(request.POST.get('institution')),
         identityCardNumber = request.POST.get('identityCardNumber'),
     )
-    return person
 
 # Create object request in model
 def create_user(request):

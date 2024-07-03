@@ -2,16 +2,38 @@
 
 {% block 'thead' %}
     {% include 'components/th.html' with text='Paciente' icon="users" %}
-    {% include 'components/th.html' with text='Realização' icon="map" %}
-    {% include 'components/th.html' with text='Descrição' icon="file-text" %}
+    {% include 'components/th.html' with text='Doctor' icon="map" %}
+    {% include 'components/th.html' with text='Tipo Pagamento' icon="map" %}
+    {% include 'components/th.html' with text='Tipo Consulta' icon="map" %}
+    {% include 'components/th.html' with text='Instituição' icon="map" %}
+    {% include 'components/th.html' with text='Valor pago' icon="map" %}
+    {% include 'components/th.html' with text='Data' icon="map" %}
+    {% include 'components/th.html' with text='Hora' icon="map" %}    
+    {% comment %} {% include 'components/th.html' with text='Descrição' icon="file-text" %} {% endcomment %}
 {% endblock %}
 
 {% block 'tbody' %}
     {% for medicalAppointment in data %}
         <tr>
-            <td id="patient-{{ forloop.counter0 }}" data-value="{{ medicalAppointment.patient.id }}">{{ medicalAppointment.patient.name }}</td>
-            <td id="accomplished-{{ forloop.counter0 }}">{{ medicalAppointment.accomplished }}</td>
-            <td id="description-{{ forloop.counter0 }}">{{ medicalAppointment.description }}</td>
+            <td id="patient-{{ forloop.counter0 }}" data-value="{{ medicalAppointment.patient.id }}">
+                {{ medicalAppointment.patient.person.fullname }}
+            </td>
+            <td id="doctor-{{ forloop.counter0 }}" data-value="{{ medicalAppointment.doctor.id }}">
+                {{ medicalAppointment.doctor.person.fullname }}
+            </td>
+            <td id="paymentMethod-{{ forloop.counter0 }}" data-value="{{ medicalAppointment.paymentMethod.id }}">
+                {{ medicalAppointment.paymentMethod.name }}
+            </td>
+            <td id="consultationType-{{ forloop.counter0 }}" data-value="{{ medicalAppointment.consultationType.id }}">
+                {{ medicalAppointment.consultationType.name }}
+            </td>
+            <td id="institution-{{ index }}" data-value="{{ medicalAppointment.institution.id  }}">
+                {{ medicalAppointment.institution.name }}
+            </td> 
+            <td id="valuePay-{{ forloop.counter0 }}">{{ medicalAppointment.valuePay }}</td>
+            <td id="data-{{ forloop.counter0 }}">{{ medicalAppointment.data }}</td>
+            <td id="hour-{{ forloop.counter0 }}">{{ medicalAppointment.hour }}</td>
+            {% comment %} <td id="description-{{ forloop.counter0 }}">{{ medicalAppointment.description }}</td> {% endcomment %}
             {% include 'components/td-action.html' with data='medicalAppointment' index=forloop.counter0 model=medicalAppointment.id %}
         </tr>
     {% endfor %}
@@ -24,9 +46,15 @@
 {% block 'script' %}
     <script>
         const formChangeInputValues = (item) => {
-            inputValueChange(item, 'accomplished')
             selectValueChange(item, 'patient')
-            textAreaValueChange(item, 'description')
+            selectValueChange(item, 'doctor')
+            selectValueChange(item, 'paymentMethod')
+            selectValueChange(item, 'consultationType')
+            selectValueChange(item, 'institution')
+            inputValueChange(item, 'valuePay')
+            inputValueChange(item, 'data')
+            inputValueChange(item, 'hour')
+            {% comment %} textAreaValueChange(item, 'description') {% endcomment %}
         }
     </script>
 {% endblock %}

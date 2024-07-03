@@ -1,0 +1,6 @@
+{% extends "slots/select.html" %}
+{% block 'option' %} 
+    {% for payment_method in payment_methods %}
+        <option value="{{ payment_method.id }}"> {{ payment_method.name }} </option>
+    {% endfor %}
+{% endblock %}

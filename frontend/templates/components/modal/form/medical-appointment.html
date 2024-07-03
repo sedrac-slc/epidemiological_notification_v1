@@ -6,10 +6,25 @@
    </div> 
    <div class="col-md-6 p-1">
       {% include 'components/select/doctor.html' with label="Médico:" id="doctor" icon="user" required=True  %}
+   </div>  
+   <div class="col-md-6 p-1">
+      {% include 'components/select/payment-method.html' with label="Tipo pagamento:" id="paymentMethod" icon="activity" required=True  %}
+   </div> 
+   <div class="col-md-6 p-1">
+      {% include 'components/select/consultation-type.html' with label="Tipo consulta:" id="consultationType" icon="thermometer" required=True  %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/select/institution.html' with label="Instituição:" id="institution" icon="map" required=True  %}
    </div>    
    <div class="col-md-6 p-1">
-      {% include 'components/input.html' with type="datetime-local" label="Realizado:" id="accomplished" icon="calendar" required=True %}
+      {% include 'components/input.html' with type="number" label="Valor pago:" id="valuePay" icon="dollar-sign" required=True %}
+   </div>     
+   <div class="col-md-6 p-1">
+      {% include 'components/input.html' with type="date" label="Data" id="data" icon="calendar" required=True %}
    </div> 
+   <div class="col-md-6 p-1">
+      {% include 'components/input.html' with type="time" label="Hora" id="hour" icon="clock" required=True %}
+   </div>
    <div class="col-md-12 p-1">
       {% include 'components/textarea.html' with label="Descrição:" id="description" icon="message-square" required=False %}
    </div>       

@@ -5,12 +5,10 @@ from django.utils import timezone
 class ProvinceService:
    
     def findAll(self):
-        data = Province.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
-        return data
-    
+        return Province.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
+        
     def findAllPage(self, request):
-        data = self.findAll()
-        return paginator(request, data)
+        return paginator(request, self.findAll())
     
     def findById(self, id):
         return Province.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True).first()

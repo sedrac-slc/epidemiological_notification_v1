@@ -1,9 +1,9 @@
 from backend.entities.concrect.province import Province
 
 def to_province(request):
-    data = Province(name = request.POST.get('name') )
-    return data
-
+    return Province(name = request.POST.get('name') )
+    
 def to_province_model(request):
-    data = Province(id = request.POST.get('model') , name = request.POST.get('name') )
+    data = to_province(request)
+    data.id = request.POST.get('model')
     return data
