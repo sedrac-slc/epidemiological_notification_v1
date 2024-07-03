@@ -21,6 +21,12 @@ const inputValueChange = (item, attrName) => {
     modalForm.querySelector(`#${attrName}`).value = tableResponsive.querySelector(`#${attrName}-${index}`).innerHTML;
 }
 
+const textAreaValueChange = (item, attrName) => {
+    let index = item.dataset.index;
+    modalForm.querySelector(`#${attrName}`).value = tableResponsive.querySelector(`#${attrName}-${index}`).innerHTML;
+}
+
+
 const selectValueChange = (item, attrName) => {
     let index = item.dataset.index;
     let select = modalForm.querySelector(`#${attrName}`);

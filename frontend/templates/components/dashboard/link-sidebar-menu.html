@@ -1,5 +1,9 @@
 <a class="show-cat-btn" href="#">
-    <span class="{{ icon|default:'icon document' }}" aria-hidden="true"></span>
+    {% if type == "featcher" %}
+        <i style="margin-right: 10px;" data-feather="{{ icon|default:'search' }}" aria-hidden="true"></i>
+    {% else %}
+        <span class="{{ icon|default:'icon home' }}" aria-hidden="true"></span>
+    {% endif %}
     <span>{{ text|default:'Link' }} </span>
     <span class="category__btn transparent-btn" title="Open list">
         <span class="sr-only">Open list</span>

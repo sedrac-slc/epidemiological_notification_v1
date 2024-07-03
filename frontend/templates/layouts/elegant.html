@@ -50,14 +50,19 @@
                             </ul>
                         </li>
                         <li>
-                            {% include 'components/dashboard/link-sidebar.html' with text='Doença' icon='droplet' type="featcher" href='sickness.index' %}                            
-                        </li>
-                        <li>
-                            {% include 'components/dashboard/link-sidebar.html' with text='Ficha médica' icon='file' type="featcher" href='medical_record.index' %}                            
-                        </li>                        
+                            {% include 'components/dashboard/link-sidebar-menu.html' with text='Gestão de Saúde' icon='droplet' type="featcher" %}
+                            <ul class="cat-sub-menu">
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Doença' href='sickness.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Tipo consulta' href='consultation_type.index' %}                                
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Consulta' href='medical_appointment.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Ficha médica' icon='file' type="featcher" href='medical_record.index' %}
+                            </ul>
+                        </li>                      
+                        {% comment %} 
                         <li>
                             {% include 'components/dashboard/link-sidebar-bagde.html' with text='Notificação' %}                            
                         </li>
+                        {% endcomment %}
                     </ul>
                     <span class="system-menu__title">Sistema</span>
                     <ul class="sidebar-body-menu">

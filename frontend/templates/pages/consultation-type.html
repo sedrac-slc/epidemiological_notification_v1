@@ -1,0 +1,29 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+    {% include 'components/th.html' with text='Preço' icon="number" %}
+{% endblock %}
+
+{% block 'tbody' %}
+{% for consultationType in data %}
+<tr>
+    <td id="name-{{ forloop.counter0 }}">{{ consultationType.name }}</td>
+    <td id="price-{{ forloop.counter0 }}">{{ consultationType.price }}</td>
+    {% include 'components/td-action.html' with data='consultationType' index=forloop.counter0 model=consultationType.id %}
+</tr>
+{% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/consultation-type.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'name')
+            inputValueChange(item, 'price')
+        }
+    </script>
+{% endblock %}

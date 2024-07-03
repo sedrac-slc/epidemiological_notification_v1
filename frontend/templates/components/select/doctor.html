@@ -1,0 +1,6 @@
+{% extends "slots/select.html" %}
+{% block 'option' %} 
+    {% for doctors in doctor %}
+        <option value="{{ doctor.id }}"> {{ doctor.name }} </option>
+    {% endfor %}
+{% endblock %}

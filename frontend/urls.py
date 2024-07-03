@@ -1,6 +1,6 @@
 from django.urls import path
 from frontend import views
-from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_record
+from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_record, medical_appointment, consultation_type
 
 #routes views
 urlpatterns = [
@@ -57,7 +57,17 @@ urlpatterns = [
     path('medical_record/', medical_record.index, name="medical_record.index"),
     path('medical_record/store', medical_record.store, name="medical_record.store"),
     path('medical_record/update', medical_record.update, name="medical_record.update"),
-    path('medical_record/delete', medical_record.delete, name="medical_record.delete"),        
+    path('medical_record/delete', medical_record.delete, name="medical_record.delete"), 
+
+    path('medical_appointment/', medical_appointment.index, name="medical_appointment.index"),
+    path('medical_appointment/store', medical_appointment.store, name="medical_appointment.store"),
+    path('medical_appointment/update', medical_appointment.update, name="medical_appointment.update"),
+    path('medical_appointment/delete', medical_appointment.delete, name="medical_appointment.delete"),
+    
+    path('consultation_type/', consultation_type.index, name="consultation_type.index"),
+    path('consultation_type/store', consultation_type.store, name="consultation_type.store"),
+    path('consultation_type/update', consultation_type.update, name="consultation_type.update"),
+    path('consultation_type/delete', consultation_type.delete, name="consultation_type.delete"),            
 ]
 
 #route ajax (htmx)

@@ -1,0 +1,32 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Paciente' icon="users" %}
+    {% include 'components/th.html' with text='Realização' icon="map" %}
+    {% include 'components/th.html' with text='Descrição' icon="file-text" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for medicalAppointment in data %}
+        <tr>
+            <td id="patient-{{ forloop.counter0 }}" data-value="{{ medicalAppointment.patient.id }}">{{ medicalAppointment.patient.name }}</td>
+            <td id="accomplished-{{ forloop.counter0 }}">{{ medicalAppointment.accomplished }}</td>
+            <td id="description-{{ forloop.counter0 }}">{{ medicalAppointment.description }}</td>
+            {% include 'components/td-action.html' with data='medicalAppointment' index=forloop.counter0 model=medicalAppointment.id %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/medical-appointment.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'accomplished')
+            selectValueChange(item, 'patient')
+            textAreaValueChange(item, 'description')
+        }
+    </script>
+{% endblock %}

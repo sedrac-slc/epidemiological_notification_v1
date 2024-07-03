@@ -8,4 +8,6 @@ from .entities.concrect.patient import Patient
 from .entities.concrect.laboratory_technician import LaboratoryTechnician
 from .entities.concrect.medical_record import MedicalRecord
 from .entities.concrect.medical_record_page import MedicalRecordPage
+from .entities.concrect.consultation_type import ConsultationType
+from .entities.concrect.medical_appointment import MedicalAppointment
 # Create your models here.
