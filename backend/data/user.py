@@ -25,7 +25,4 @@ class UserData(Enum):
     RENATO = user_create(FullnameEnum.RENATO.value,"renato-renal","renato.renal@system.ao")
     ZAITA = user_create(FullnameEnum.ZAITA.value,"zaita-nehima","zaita.nehima@system.ao")
     
-    ALL = [
-        PAULO, MARTA, PEDRO, BELA, FERNANDO, HELENA, RENATO, ZAITA
-    ]
- 
+    ALL = [PAULO, MARTA, PEDRO, BELA, FERNANDO, HELENA, RENATO, ZAITA]

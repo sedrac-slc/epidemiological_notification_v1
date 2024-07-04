@@ -5,7 +5,5 @@ class PaymentMethodData(Enum):
     MULTICAIXA = PaymentMethod(name="Multicaixa")
     CAIXA = PaymentMethod(name="Caixa")
     
-    ALL = [
-        MULTICAIXA, CAIXA,
-    ]
+    ALL = [MULTICAIXA, CAIXA]
  

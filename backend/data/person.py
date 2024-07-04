@@ -28,6 +28,4 @@ class PersonData(Enum):
     RENATO = person_create(UserData.RENATO.value,InstitutionData.INSTITUTION_THREE.value, "007093123LA953", FullnameEnum.RENATO.value, "1994-11-20","967120997","MALE","SINGLE")
     ZAITA = person_create(UserData.ZAITA.value,InstitutionData.INSTITUTION_FOUR.value, "009020163LA682", FullnameEnum.ZAITA.value, "1969-11-20","968523357","FEMALE","WIDOWER")
 
-    ALL = [
-       PAULO, MARTA, PEDRO, BELA, FERNANDO, HELENA, RENATO, ZAITA
-    ]
+    ALL = [PAULO, MARTA, PEDRO, BELA, FERNANDO, HELENA, RENATO, ZAITA]

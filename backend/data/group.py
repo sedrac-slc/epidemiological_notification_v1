@@ -8,7 +8,5 @@ class GroupData(Enum):
     PATIENT = Group(name="Pacientes")
     LABORATORY_TECHNICIAN = Group(name="Técnicos de Laboratórios")
     
-    ALL = [
-        DOCTOR, PATIENT, LABORATORY_TECHNICIAN
-    ]
+    ALL = [DOCTOR, PATIENT, LABORATORY_TECHNICIAN]
  

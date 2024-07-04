@@ -9,7 +9,5 @@ class InstitutionData(Enum):
     INSTITUTION_THREE = Institution(name="Clínica Multiperfil", group="privado", director="Cardoso Afonso", location="Luanda, Morro Bento", municipality = MunicipalityData.SAMBA.value)
     INSTITUTION_FOUR = Institution(name="Clínica Katyvala", group="privado", director="Jorge Pena", location="Huambo, Matala", municipality = MunicipalityData.HUAMBO.value)
     
-    ALL = [
-       INSTITUTION_ONE, INSTITUTION_TWO, INSTITUTION_THREE, INSTITUTION_FOUR
-    ]
+    ALL = [INSTITUTION_ONE, INSTITUTION_TWO, INSTITUTION_THREE, INSTITUTION_FOUR]
  
