@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn simplex.wsgi
+web: python manage.py migrate && gunicorn frontend.wsgi
