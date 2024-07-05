@@ -132,6 +132,8 @@ STATICFILES_DIRS = ['static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATIC_ROOT = BASE_DIR / "staticfiles" 
+
 # LOGGING = {
 #     'version': 1,
 #     'disable_existing_loggers': False,
