@@ -1,0 +1,26 @@
+:root{
+    --border-radius: 1.5rem;
+    --bg-primary-suave: #E6F5FE;
+}
+
+.navbar-nav .nav-link.active {
+    background: var(--bg-primary-suave);
+}
+
+.navbar-nav .nav-link:hover{
+    border: 1px solid var(--bs-primary);
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover{
+    border-radius: var(--border-radius);
+}
+
+.img-header{
+    margin-top: -100px;
+    margin-right: 0px;
+}
+
+.bg-primary-suave{
+    background: var(--bg-primary-suave);
+}
