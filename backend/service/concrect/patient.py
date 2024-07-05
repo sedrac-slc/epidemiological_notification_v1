@@ -3,7 +3,6 @@ from backend.service.concrect.person import PersonService
 from backend.service.helper import paginator
 from backend.dto.patient import create_patient, update_patient, hidden_patient, find_by_id
 from backend.utils.data import save_model
-from django.db import transaction
 
 personService = PersonService()
 
