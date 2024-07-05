@@ -1,5 +1,5 @@
 def save_model(data):
-    data.concat_values_fields()
+    #data.concat_values_fields()
     data.save()
     return data
 

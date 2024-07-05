@@ -27,8 +27,8 @@ from backend.data.patient import PatientData
 from backend.data.doctor import DoctorData
 from backend.data.person import PersonData
 from backend.data.group import GroupData
-from backend.data.user import UserData
 
+laboratoryTechnicianService = LaboratoryTechnicianService()
 consultationTypeService = ConsultationTypeService()
 medicalRecordService = MedicalRecordService()
 paymentMethodService = PaymentMethodService()
@@ -58,6 +58,7 @@ class Command(BaseCommand):
         medical_records = MedicalRecordData.ALL.value
         payment_methods = PaymentMethodData.ALL.value
         consultation_types = ConsultationTypeData.ALL.value
+        laboratory_technicians = LaboratoryTechnicianData.ALL.value
         
         for group in groups:
             groupService.findOrSave(group)
@@ -90,6 +91,18 @@ class Command(BaseCommand):
             person.institution = get_item_by_name(institutions, person.institution)
             person = personService.findOrSave(person)
         
-        #for doctor in doctors:
-            #doctor.person = get_item_by_identity_card_number(persons, doctor.person)
-            #doctor = doctorService.findOrSave(doctor)
+        for doctor in doctors:
+            doctor.person = personService.findByIdentityCardNumber(doctor.person)
+            doctor = doctorService.findOrSave(doctor)
+            
+        for patient in patienties:
+            patient.person = personService.findByIdentityCardNumber(patient.person)
+            patient = patientService.findOrSave(patient)
+            
+        for patient in patienties:
+            patient.person = personService.findByIdentityCardNumber(patient.person)
+            patient = patientService.findOrSave(patient)
+            
+        for laboratory_technician in laboratory_technicians:
+            laboratory_technician.person = personService.findByIdentityCardNumber(laboratory_technician.person)
+            laboratory_technician = laboratoryTechnicianService.findOrSave(laboratory_technician) 

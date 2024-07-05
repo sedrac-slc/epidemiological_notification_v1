@@ -52,14 +52,17 @@
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-password-tab" tabindex="0">
       <form class="p-2">
         <div class="row">
-          <div class="col-md-12 p-1">
-            {% include 'components/input.html' with label="Senha(actual):" type="password" icon="key" name="password_current" required=True %}
+          <div class="col-md-6 p-1">
+            {% include 'components/input.html' with label="Senha(actual):" type="password" icon="lock" name="password_current" required=True %}
           </div>
           <div class="col-md-6 p-1">
-              {% include 'components/input.html' with label="Senha:" type="password" icon="lock" name="password_now" required=True %}
+            {% include 'components/input.html' with label="Confirma(actual):" type="password" icon="unlock" name="confirm_current" required=True %}
+          </div>          
+          <div class="col-md-6 p-1">
+              {% include 'components/input.html' with label="Senha:" type="password" icon="lock" name="password" required=True %}
           </div>
           <div class="col-md-6 p-1">
-              {% include 'components/input.html' with label="Confirma:" type="password" icon="unlock" name="password_confirm" required=True %}
+              {% include 'components/input.html' with label="Confirma:" type="password" icon="unlock" name="confirm" required=True %}
           </div>  
         </div>
       </form>

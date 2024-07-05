@@ -1,6 +1,11 @@
 from backend.entities.concrect.patient import Patient
+from backend.service.concrect.person import PersonService
 from backend.service.helper import paginator
 from backend.dto.patient import create_patient, update_patient, hidden_patient, find_by_id
+from backend.utils.data import save_model
+from django.db import transaction
+
+personService = PersonService()
 
 class PatientService:
    
@@ -13,6 +18,15 @@ class PatientService:
     def findById(self, id):
         return find_by_id(id)
     
+    def findByPerson(self, patient: Patient):
+        return Patient.objects.filter(person = patient.person, deleted_at__isnull=True, deleted_by__isnull=True).first()    
+        
+    def findOrSave(self, data: Patient):
+        patient = self.findByPerson(data)        
+        if patient != None: 
+            return patient
+        return save_model(data)
+            
     def save(self, request):
         return create_patient(request)
     

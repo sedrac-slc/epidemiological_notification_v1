@@ -10,14 +10,16 @@ class PersonService:
     def findByUser(self, user: User):
         return Person.objects.filter(user = user, deleted_at__isnull=True, deleted_by__isnull=True).first()
     
+    def findByIdentityCardNumber(self, person: Person):
+        return Person.objects.filter(identityCardNumber = person.identityCardNumber, deleted_at__isnull=True, deleted_by__isnull=True).first()    
+    
     def findOrSave(self, data: Person):
-        try:
-            with transaction.atomic():
-                data.user = userService.findOrSave(data.user)
-                return self.save(data)
-        except Exception:
-            return data
+        person = self.findByIdentityCardNumber(data)        
+        if person != None: 
+            return person
+        return self.save(data)
     
     def save(self, data: Person):
+        data.concat_values_fields()
         data.save()
         return data
