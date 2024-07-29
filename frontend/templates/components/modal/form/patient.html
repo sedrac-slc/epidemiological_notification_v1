@@ -1,6 +1,24 @@
 {% extends "slots/modal.html" %}
 {% block 'body' %} 
 <section class="row">
-   {% include 'partials/user-inputs.html' with password=True %}
+   {% include 'partials/user-inputs.html' with password=False parm_user=False %}
+   <div class="col-md-6 p-1">
+     {% include 'components/input.html' with label="Telefone 2:" id="phoneTwo" required=False %}
+  </div>
+  <div class="col-md-6 p-1">
+   {% include 'components/input.html' with label="Nome pai:" id="fullnameFather" required=False %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/input.html' with label="Nome mãe:" id="fullnameMother" required=False %}
+   </div> 
+   <div class="col-md-6 p-1">
+      {% include 'components/input.html' with label="Bairro:" id="neighborhood" required=False %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/input.html' with label="Residência:" id="residence" required=False %}
+   </div>   
+   <div class="col-md-6 p-1">
+      {% include 'components/input.html' with label="Ponto de referência:" id="referencePoint" required=False %}
+   </div>
 </section>
 {% endblock %}

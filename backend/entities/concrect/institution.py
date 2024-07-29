@@ -10,5 +10,8 @@ class Institution(EntityCommon):
     director = models.TextField(max_length=255)
     location = models.TextField(max_length=255)
     
+    class Meta:
+        ordering = ['id']
+
     def concat_values_fields(self):
         super().concat_values_fields([ self.name, self.group, self.director, self.location])
