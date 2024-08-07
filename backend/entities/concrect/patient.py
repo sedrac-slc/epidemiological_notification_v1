@@ -4,7 +4,12 @@ from.person import Person
 
 class Patient(EntityCommon):
     person = models.OneToOneField(Person, on_delete = models.CASCADE)
-    neighborhood = models.TextField(max_length=255)
+    phoneTwo = models.TextField(max_length=255,null=True, blank=True)
+    residence = models.TextField(max_length=255, null=True, blank=True)
+    neighborhood = models.TextField(max_length=255, null=True, blank=True)
+    referencePoint = models.TextField(max_length=255, null=True, blank=True)
+    fullnameFather = models.TextField(max_length=255, null=True, blank=True)
+    fullnameMother = models.TextField(max_length=255, null=True, blank=True)
     
     def concat_values_fields(self):
         super().concat_values_fields([

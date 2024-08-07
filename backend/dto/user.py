@@ -3,12 +3,20 @@ from django.utils import timezone
 from backend.entities.concrect.person import Person
 from backend.entities.concrect.institution import Institution
 from backend.utils.user import get_firstname, get_lastname
+from nanoid import generate
 
 # Parse request for objects model
-def user_request(request):
-    email = request.POST.get('email')
-    password = request.POST.get('password')
-    username = request.POST.get('username')
+def user_request(request, passwordGenerator = False):
+    
+    if passwordGenerator:
+        password = generate(size=10)
+        username = "patient#".join(password)
+        email =  f"p{password}@gmail.com"
+    else:
+        password = request.POST.get('password')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        
     last_name = get_lastname(request.POST.get('fullname'))
     first_name = get_firstname(request.POST.get('fullname'))
     return User(
@@ -32,13 +40,20 @@ def person_request(request, user):
     )
 
 # Create object request in model
-def create_user(request):
-    user = user_request(request)
+def create_user(request, passwordGenerator = False):
+    user = user_request(request, passwordGenerator)
     user.save()
     return user
 
 def create_person(request):
     user = create_user(request)
+    person = person_request(request, user)
+    person.concat_values_fields()
+    person.save()
+    return person
+
+def create_person_patient(request):
+    user = create_user(request,True)
     person = person_request(request, user)
     person.concat_values_fields()
     person.save()
