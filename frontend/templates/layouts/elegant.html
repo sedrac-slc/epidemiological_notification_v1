@@ -38,32 +38,28 @@
                             {% include 'components/dashboard/link-sidebar-menu.html' with text='Utilizadores' icon='icon user-3' %}
                             <ul class="cat-sub-menu">
                                 {% include 'components/dashboard/link-sidebar-submenu.html' with text='Médicos' href='doctor.index' %}
-                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Pacientes' href='patient.index' %}
                                 {% include 'components/dashboard/link-sidebar-submenu.html' with text='Laboratório' href='laboratory_technician.index' %}
-                            </ul>
-                        </li>
-                        <li>
-                            {% include 'components/dashboard/link-sidebar-menu.html' with text='Localização' icon='icon folder' %}
-                            <ul class="cat-sub-menu">
-                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Província' href='province.index' %}
-                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Munícipio' href='municipality.index' %}
                             </ul>
                         </li>
                         <li>
                             {% include 'components/dashboard/link-sidebar-menu.html' with text='Gestão de Saúde' icon='droplet' type="featcher" %}
                             <ul class="cat-sub-menu">
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Pacientes' href='patient.index' %}                                
                                 {% include 'components/dashboard/link-sidebar-submenu.html' with text='Doença' href='sickness.index' %}
-                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Forma pagamento' href='payment_method.index' %}
-                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Tipo consulta' href='consultation_type.index' %}                                
-                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Consulta' href='medical_appointment.index' %}
-                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Ficha médica' icon='file' type="featcher" href='medical_record.index' %}
-                            </ul>
-                        </li>                      
-                        {% comment %} 
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Exame' href='patient.index' %}                                
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Notificar' href='sickness.index' %}                                
+                           </ul>
+                        </li>    
                         <li>
-                            {% include 'components/dashboard/link-sidebar-bagde.html' with text='Notificação' %}                            
+                            {% include 'components/dashboard/link-sidebar-menu.html' with text='Outros' icon='icon folder' %}
+                            <ul class="cat-sub-menu">
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Província' href='province.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Munícipio' href='municipality.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Comuna' href='municipality.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Zona' href='municipality.index' %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Contacto' href='municipality.index' %}
+                            </ul>
                         </li>
-                        {% endcomment %}
                     </ul>
                     <span class="system-menu__title">Sistema</span>
                     <ul class="sidebar-body-menu">

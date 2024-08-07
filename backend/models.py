@@ -5,10 +5,6 @@ from .entities.concrect.patient import Patient
 from .entities.concrect.province import Province
 from .entities.concrect.institution import Institution
 from .entities.concrect.municipality import Municipality
-from .entities.concrect.payment_method import PaymentMethod
-from .entities.concrect.medical_record import MedicalRecord
-from .entities.concrect.consultation_type import ConsultationType
-from .entities.concrect.medical_record_page import MedicalRecordPage
 from .entities.concrect.medical_appointment import MedicalAppointment
 from .entities.concrect.laboratory_technician import LaboratoryTechnician
 # Create your models here.

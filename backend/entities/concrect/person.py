@@ -22,4 +22,4 @@ class Person(EntityCommon):
     birthday = models.DateField()
     
     def concat_values_fields(self):
-        super().concat_values_fields([self.fullname, self.user.username, self.user.email, self.identityCardNumber, self.phone, self.gender, self.maritalStatus, self.birthday])  
+        super().concat_values_fields([self.fullname, self.identityCardNumber, self.phone, self.gender, self.maritalStatus, self.birthday])  

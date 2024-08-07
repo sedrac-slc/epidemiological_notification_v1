@@ -11,7 +11,7 @@ class InstitutionService:
         return self.list().all()    
     
     def findAllPage(self, request):
-        return paginator(request, self.list())
+        return paginator(request, self.findAll())
     
     def findById(self, id):
         return Institution.objects.filter(id = id, deleted_at__isnull=True, deleted_by__isnull=True).first()

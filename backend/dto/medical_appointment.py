@@ -1,8 +1,6 @@
 from backend.entities.concrect.patient import Patient
 from backend.entities.concrect.doctor import Doctor
 from backend.entities.concrect.institution import Institution
-from backend.entities.concrect.payment_method import PaymentMethod
-from backend.entities.concrect.consultation_type import ConsultationType
 from backend.entities.concrect.medical_appointment import MedicalAppointment
 
 def to_medical_appointment(request):
