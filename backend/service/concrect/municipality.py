@@ -9,6 +9,9 @@ class MunicipalityService:
 
     def list(self):
         return Municipality.objects.filter(deleted_at__isnull=True, deleted_by__isnull=True)
+    
+    def findAll(self):
+        return self.list().all()
         
     def findAllPage(self, request):
         return paginator(request, self.list())

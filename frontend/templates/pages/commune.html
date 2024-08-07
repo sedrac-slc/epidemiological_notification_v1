@@ -1,0 +1,31 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+    {% include 'components/th.html' with text='Munícipio' icon="map" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for commune in data %}
+        <tr>
+            <td id="name-{{ forloop.counter0 }}">{{ commune.name }}</td>
+            <td id="province-{{ forloop.counter0 }}" data-value="{{ commune.municipality.id }}">
+                {{ commune.municipality.name }}
+            </td>
+            {% include 'components/td-action.html' with data='commune' index=forloop.counter0 model=commune.id %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/commune.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'name')
+            selectValueChange(item, 'province')
+        }
+    </script>
+{% endblock %}

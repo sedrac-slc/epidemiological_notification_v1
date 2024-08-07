@@ -1,0 +1,26 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+{% endblock %}
+
+{% block 'tbody' %}
+    {% for zone in data %}
+        <tr>
+            <td id="name-{{ forloop.counter0 }}">{{ zone.name }}</td>
+            {% include 'components/td-action.html' with data='zone' index=forloop.counter0 model=zone.id %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/zone.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'name')
+        }
+    </script>
+{% endblock %}

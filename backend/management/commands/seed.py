@@ -11,6 +11,7 @@ from backend.service.concrect.doctor import DoctorService
 from backend.service.concrect.person import PersonService
 from backend.service.concrect.group import GroupService
 from backend.service.concrect.user import UserService
+from backend.service.concrect.zone import ZoneService
 
 from backend.data.laboratory_technician import LaboratoryTechnicianData
 from backend.data.municipality import MunicipalityData
@@ -22,6 +23,7 @@ from backend.data.doctor import DoctorData
 from backend.data.person import PersonData
 from backend.data.group import GroupData
 from backend.data.user import UserData
+from backend.data.zone import ZoneData
 
 laboratoryTechnicianService = LaboratoryTechnicianService()
 municipalityService = MunicipalityService()
@@ -33,12 +35,14 @@ doctorService = DoctorService()
 personService = PersonService()
 groupService = GroupService()
 userService = UserService()
+zoneService = ZoneService()
 
 class Command(BaseCommand):
     
     def handle(self, *args, **options):
 
         #users = UserData.ALL.value
+        zones = ZoneData.ALL.value
         groups  = GroupData.ALL.value
         persons = PersonData.ALL.value
         #doctors = DoctorData.ALL.value
@@ -51,6 +55,9 @@ class Command(BaseCommand):
         
         for group in groups:
             groupService.findOrSave(group)
+            
+        for zone in zones:
+            zoneService.findOrSave(zone)            
 
         for province in provinces:
             province = provinceService.findOrSave(province)
@@ -69,12 +76,12 @@ class Command(BaseCommand):
         for sickness in sicknesies:
             sickness = sicknessService.findOrSave(sickness)
 
-        for user in users:
-            user = userService.findOrSave(user)
+        #for user in users:
+        #    user = userService.findOrSave(user)
         
-        for person in persons:
-            person.institution = get_item_by_name(institutions, person.institution)
-            person = personService.findOrSave(person)
+        #for person in persons:
+        #    person.institution = get_item_by_name(institutions, person.institution)
+        #    person = personService.findOrSave(person)
         
         #for doctor in doctors:
         #    doctor.person = personService.findByIdentityCardNumber(doctor.person)

@@ -1,6 +1,6 @@
 from django.urls import path
 from frontend import views
-from frontend.controllers import institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_appointment
+from frontend.controllers import zone, commune, institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_appointment
 
 #routes views
 urlpatterns = [
@@ -14,15 +14,25 @@ urlpatterns = [
 
 urlpatterns += [
     
+    path('zone/', zone.index, name="zone.index"),
+    path('zone/store', zone.store, name="zone.store"),
+    path('zone/update', zone.update, name="zone.update"),
+    path('zone/delete', zone.delete, name="zone.delete"),   
+    
     path('group/', group.index, name="group.index"),
     path('group/store', group.store, name="group.store"),
     path('group/update', group.update, name="group.update"),
     path('group/delete', group.delete, name="group.delete"),   
-    
+         
     path('doctor/', doctor.index, name="doctor.index"),
     path('doctor/store', doctor.store, name="doctor.store"),
     path('doctor/update', doctor.update, name="doctor.update"),
     path('doctor/delete', doctor.delete, name="doctor.delete"),    
+    
+    path('commune/', commune.index, name="commune.index"),
+    path('commune/store', commune.store, name="commune.store"),
+    path('commune/update', commune.update, name="commune.update"),
+    path('commune/delete', commune.delete, name="commune.delete"),     
     
     path('patient/', patient.index, name="patient.index"),
     path('patient/store', patient.store, name="patient.store"),

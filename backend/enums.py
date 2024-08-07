@@ -12,6 +12,12 @@ MARITAL_STATUS_CHOICES = [
     ('DIVORCED', 'DIVORCED'),
 ]
 
+CONTACT_TYPES = [
+    ('PRINCIPAL', 'PRINCIPAL'),
+    ('ALTERNATIVE', 'ALTERNATIVE'),
+    ('WHATSAPP', 'WHATSAPP'),
+]
+
 class FullnameEnum(Enum):
     PAULO = "Paulo Oliveira Santos"
     MARTA = "Marta Kina Velma"
