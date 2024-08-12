@@ -1,38 +1,38 @@
     
    <div class="col-md-6 p-1">
-      {% include 'components/select/institution.html' with label="Instituição:" id="institution" icon="map" required=True  %}
+      {% include 'components/select/institution.html' with label="Instituição:" id="institution" required=True  %}
    </div>
     <div class="col-md-6 p-1">
-       {% include 'components/input.html' with label="Nome completo:" id="fullname" icon="file-text" required=True %}
+       {% include 'components/input.html' with label="Nome completo:" id="fullname" required=True %}
     </div>
     {% if parm_user %}
     <div class="col-md-6 p-1 item-secret">
-      {% include 'components/input.html' with label="Nome usuário:" id="username" icon="file" required=True %}
+      {% include 'components/input.html' with label="Nome usuário:" id="username" required=True %}
    </div>   
     <div class="col-md-6 p-1">
        {% include 'components/input-email.html' with label="Email:" id="email" required=False %}
     </div>
     {% endif %}   
     <div class="col-md-6 p-1">
-       {% include 'components/input.html' with label="Bilhete:" id="identityCardNumber" icon="credit-card" required=True %}
+       {% include 'components/input.html' with label="Bilhete:" id="identityCardNumber" required=True %}
     </div>
     <div class="col-md-6 p-1">
        {% include 'components/input-date.html' with label="Nascimento:" id="birthday" required=True %}
     </div>
     <div class="col-md-6 p-1">
-       {% include 'components/select/gender.html' with label="Genêro:" id="gender" icon="users" required=True %}
+       {% include 'components/select/gender.html' with label="Genêro:" id="gender" required=True %}
     </div>
     <div class="col-md-6 p-1">
-      {% include 'components/select/marital-status.html' with label="Estado cívil:" id="maritalStatus" icon="user" required=True %}
+      {% include 'components/select/marital-status.html' with label="Estado cívil:" id="maritalStatus" required=True %}
    </div>
    <div class="col-md-6 p-1">
-      {% include 'components/input.html' with label="Telefone 1:" id="phone" icon="phone" required=True %}
+      {% include 'components/input.html' with label="Telefone 1:" id="phone" required=True %}
    </div>   
    {% if password %}
       <div class="col-md-6 p-1 item-secret">
-         {% include 'components/input.html' with label="Senha:" id="password" type="password" icon="lock" required=True %}
+         {% include 'components/input.html' with label="Senha:" id="password" type="password" required=True %}
       </div>
       <div class="col-md-6 p-1 item-secret">
-         {% include 'components/input.html' with label="Confirma:" id="confirm" type="password" icon="lock" required=True %}
+         {% include 'components/input.html' with label="Confirma:" id="confirm" type="password" required=True %}
       </div>        
    {% endif %}

@@ -1,6 +1,6 @@
 {% extends "slots/modal.html" %}
 {% block 'body' %} 
 <section class="row">
-   {% include 'partials/user-inputs.html' with password=True %}
+   {% include 'partials/user-inputs.html' with password=True parm_user=True %}
 </section>
 {% endblock %}

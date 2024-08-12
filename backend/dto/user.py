@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from backend.entities.concrect.person import Person
 from backend.entities.concrect.institution import Institution
-from backend.utils.user import get_firstname, get_lastname
+from backend.utils.user import get_firstname, get_lastname, create_username
 from nanoid import generate
 
 # Parse request for objects model

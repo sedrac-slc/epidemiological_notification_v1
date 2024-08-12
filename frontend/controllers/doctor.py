@@ -30,7 +30,7 @@ def store(request):
         with transaction.atomic():
             doctorService.save(request)
             messages.success(request, 'Médico cadastrada com successo!')
-    except Exception:
+    except Exception as e:
         messages.error(request, 'Não foi possível realizar o cadastramento!')
     return redirect('doctor.index')
    

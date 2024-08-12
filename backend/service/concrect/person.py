@@ -13,10 +13,12 @@ class PersonService:
     def findByIdentityCardNumber(self, person: Person):
         return Person.objects.filter(identityCardNumber = person.identityCardNumber, deleted_at__isnull=True, deleted_by__isnull=True).first()    
     
+    @transaction.atomic
     def findOrSave(self, data: Person):
         person = self.findByIdentityCardNumber(data)        
         if person != None: 
             return person
+        data.user = userService.findOrSave(data.user)
         return self.save(data)
     
     def save(self, data: Person):

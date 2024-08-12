@@ -23,6 +23,8 @@ populando a base dados com informações
 10- python manage.py seed
 
 pip install django-role-permissions
+pip install nanoid
+pip install unidecode
 
 para criar os arquivos de dependência do projecto
 pip freeze > requirements.txt

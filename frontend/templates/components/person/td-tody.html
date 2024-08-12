@@ -1,14 +1,19 @@
 <td id="fullname-{{ index }}">{{ info.person.fullname }}</td>
 <td id="identityCardNumber-{{ index }}">{{ info.person.identityCardNumber }}</td>
-<td id="email-{{ index }}">{{ info.person.user.email }}</td>
+<td id="phone-{{ index }}">{{ info.person.phone }}</td>
+<td id="phoneTwo-{{ index }}" class="d-none">{{ info.phoneTwo }}</td>
 <td id="birthday-{{ index }}">{{ info.person.birthday|date:"Y-m-d" }}</td>
 <td id="gender-{{ index }}" data-value="{{ info.person.gender }}">
     {{ info.person.gender }}
 </td>
 <td id="maritalStatus-{{ index }}" data-value="{{ info.person.maritalStatus }}">
     {{ info.person.maritalStatus }}
-</td>            
-<td id="phone-{{ index }}">{{ info.person.phone }}</td>
+</td>
+<td id="fullnameFather-{{ index }}">{{ info.fullnameFather }}</td>
+<td id="fullnameMother-{{ index }}">{{ info.fullnameMother }}</td>
+<td id="neighborhood-{{ index }}">{{ info.neighborhood }}</td>
+<td id="residence-{{ index }}">{{ info.residence }}</td>
+<td id="referencePoint-{{ index }}">{{ info.referencePoint }}</td>
 <td id="institution-{{ index }}" data-value="{{ info.person.institution.id  }}">
     {{ info.person.institution.name }}
 </td> 

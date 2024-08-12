@@ -1,5 +1,4 @@
 <label for="{{ id|default:'' }}" class="form-label">
-    {% comment %} <i data-feather="{{ icon|default:'search' }}" aria-hidden="true"></i> {% endcomment %}
     <span>{{ label|default:'' }}</span>
     {% if required|default:False %} <span class="text-danger">*</span> {% endif %}
 </label>

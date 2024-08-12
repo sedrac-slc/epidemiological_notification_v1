@@ -15,27 +15,31 @@ const openChange = (attrName, value = "") => {
 }        
 
 const saveCrud = (item) => {
-    openChange('username')    
-    openChange('password')
-    openChange('confirm')
+    openChange('username');
+    openChange('password');
+    openChange('confirm');
 }
 
 const formChangeInputValues = (item) => {
 
-    inputValueChange(item, 'identityCardNumber')
-    inputValueChange(item, 'fullname')
-    inputValueChange(item, 'birthday')
-    inputValueChange(item, 'phone')
-    inputValueChange(item, 'email')
+    inputValueChange(item, 'identityCardNumber');
+    inputValueChange(item, 'fullname');
+    inputValueChange(item, 'birthday');
+    inputValueChange(item, 'phone');
+    inputValueChange(item, 'email');
 
-    selectValueChange(item, 'maritalStatus')
-    selectValueChange(item, 'institution')
-    selectValueChange(item, 'gender')
-    
+    selectValueChange(item, 'maritalStatus');
+    selectValueChange(item, 'institution');
+    selectValueChange(item, 'gender');
+
+    if (typeof formPersonInputChange === 'function') {
+        formPersonInputChange(item);
+    }
+
     if(item.dataset.method == METHOD_UPDATE || item.dataset.method == METHOD_DELETE) {
-        hiddenChange('username')
-        hiddenChange('password')
-        hiddenChange('confirm')
+        hiddenChange('username');
+        hiddenChange('password');
+        hiddenChange('confirm');
     }
 
 }

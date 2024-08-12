@@ -19,4 +19,14 @@
 
 {% block 'script' %}
     <script src="{% static 'js/person.js' %}"></script>
+    <script>
+        const formPersonInputChange = (item) => {
+            inputValueChange(item, 'phoneTwo');
+            inputValueChange(item, 'residence');
+            inputValueChange(item, 'neighborhood');
+            inputValueChange(item, 'fullnameFather');
+            inputValueChange(item, 'fullnameMother');
+            inputValueChange(item, 'referencePoint');
+        }
+    </script>
 {% endblock %}

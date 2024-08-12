@@ -18,6 +18,7 @@ const modelChange = (item) => {
 
 const inputValueChange = (item, attrName) => {
     let index = item.dataset.index;
+    console.log(`#${attrName}-${index}`);
     modalForm.querySelector(`#${attrName}`).value = tableResponsive.querySelector(`#${attrName}-${index}`).innerHTML;
 }
 
@@ -73,10 +74,10 @@ btnDelete.forEach( item => {
 })
 
 buttonStoreModalCrudAction.addEventListener('click', (e) =>{
+    if(typeof saveCrud === 'function') saveCrud(e.target);
     const formControl = modalForm.querySelectorAll('.form-control');
     formControl.forEach((item) => item.value = "");
     actionChange(buttonStoreModalCrudAction)
     closedOrOpenFormControl(true);
     modalHeaderBackgroudChange("bg-none", "text-black", "Adicionar");
-    if(typeof saveCrud === 'function') saveCrud(e.target)
 })
