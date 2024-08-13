@@ -1,13 +1,17 @@
 {% include 'components/th.html' with text='Nome' %}
 {% include 'components/th.html' with text='Bilhete' %}
 {% include 'components/th.html' with text='Telefone' %}
-{% include 'components/th.html' with text='Telefone(2)' cls='d-none' %}
+{% if parm_user %}
+    {% include 'components/th.html' with text='Telefone(2)' cls='d-none' %}
+{% endif %}
 {% include 'components/th.html' with text='Nascimento' %}
 {% include 'components/th.html' with text='Gênero' %}
 {% include 'components/th.html' with text='Estado' %}
-{% include 'components/th.html' with text='Pai' %}
-{% include 'components/th.html' with text='Mãe' %}
-{% include 'components/th.html' with text='Bairro' %}
-{% include 'components/th.html' with text='Residência' %}
-{% include 'components/th.html' with text='Ponto referência' %}
+{% if parm_user %}
+  {% include 'components/th.html' with text='Pai' %}
+  {% include 'components/th.html' with text='Mãe' %}
+  {% include 'components/th.html' with text='Bairro' %}
+  {% include 'components/th.html' with text='Residência' %}
+  {% include 'components/th.html' with text='Ponto referência' %}
+{% endif %}
 {% include 'components/th.html' with text='Instituição' %}

@@ -1,13 +1,13 @@
 {% extends "layouts/dashboard.html" %}
 {% load static %}
 {% block 'thead' %}
-    {% include 'components/person/td-thead.html' %}
+    {% include 'components/person/td-thead.html' with parm_user=True %}
 {% endblock %}
 
 {% block 'tbody' %}
     {% for patient in data %}
         <tr>
-            {% include 'components/person/td-tody.html' with info=patient index=forloop.counter0 %}          
+            {% include 'components/person/td-tody.html' with info=patient index=forloop.counter0 parm_user=True %}          
             {% include 'components/td-action.html' with data='patient' data='patient' index=forloop.counter0 model=patient.id %}
         </tr>
     {% endfor %}
@@ -18,15 +18,24 @@
 {% endblock %}
 
 {% block 'script' %}
-    <script src="{% static 'js/person.js' %}"></script>
     <script>
-        const formPersonInputChange = (item) => {
+        const formChangeInputValues = (item) => {
+            inputValueChange(item, 'identityCardNumber');
+            inputValueChange(item, 'fullname');
+            inputValueChange(item, 'birthday');
+            inputValueChange(item, 'phone');
+            inputValueChange(item, 'email');
+
             inputValueChange(item, 'phoneTwo');
             inputValueChange(item, 'residence');
             inputValueChange(item, 'neighborhood');
             inputValueChange(item, 'fullnameFather');
             inputValueChange(item, 'fullnameMother');
-            inputValueChange(item, 'referencePoint');
-        }
+            inputValueChange(item, 'referencePoint');            
+        
+            selectValueChange(item, 'maritalStatus');
+            selectValueChange(item, 'institution');
+            selectValueChange(item, 'gender');
+        }        
     </script>
 {% endblock %}
