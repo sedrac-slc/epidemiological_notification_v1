@@ -9,7 +9,7 @@
     {% for commune in data %}
         <tr>
             <td id="name-{{ forloop.counter0 }}">{{ commune.name }}</td>
-            <td id="province-{{ forloop.counter0 }}" data-value="{{ commune.municipality.id }}">
+            <td id="municipality-{{ forloop.counter0 }}" data-value="{{ commune.municipality.id }}">
                 {{ commune.municipality.name }}
             </td>
             {% include 'components/td-action.html' with data='commune' index=forloop.counter0 model=commune.id %}
@@ -25,7 +25,7 @@
     <script>
         const formChangeInputValues = (item) => {
             inputValueChange(item, 'name')
-            selectValueChange(item, 'province')
+            selectValueChange(item, 'municipality')
         }
     </script>
 {% endblock %}

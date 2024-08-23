@@ -1,0 +1,21 @@
+{% extends "layouts/dashboard.html" %}
+
+{% block 'thead' %}
+    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+{% endblock %}
+
+{% block 'tbody' %}
+ 
+{% endblock %}
+
+{% block 'modal' %}
+    {% include 'components/modal/form/notification.html' with title="Formulário" %}
+{% endblock %}
+
+{% block 'script' %}
+    <script>
+        const formChangeInputValues = (item) => {
+            //inputValueChange(item, 'name')
+        }
+    </script>
+{% endblock %}

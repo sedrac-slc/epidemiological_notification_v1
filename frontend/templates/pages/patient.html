@@ -19,12 +19,11 @@
 
 {% block 'script' %}
     <script>
-        const formChangeInputValues = (item) => {
+        function formChangeInputValues(item){
             inputValueChange(item, 'identityCardNumber');
             inputValueChange(item, 'fullname');
             inputValueChange(item, 'birthday');
             inputValueChange(item, 'phone');
-            inputValueChange(item, 'email');
 
             inputValueChange(item, 'phoneTwo');
             inputValueChange(item, 'residence');

@@ -1,0 +1,11 @@
+{% extends "slots/modal.html" %}
+{% block 'body' %} 
+<section class="row">
+   <div class="col-md-6 p-1">
+      {% include 'components/htmx/select/institution.html' with label="Instituição:" id="institution" required=True  %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/select/patient.html' with label="Paciente:" id="patient" required=True  %}
+   </div>
+</section>
+{% endblock %}

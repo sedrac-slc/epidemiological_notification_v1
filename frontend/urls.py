@@ -1,6 +1,6 @@
 from django.urls import path
 from frontend import views
-from frontend.controllers import zone, commune, institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_appointment
+from frontend.controllers import notification, zone, commune, institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_appointment
 
 #routes views
 urlpatterns = [
@@ -13,6 +13,8 @@ urlpatterns = [
 
 
 urlpatterns += [
+    
+    path('notification/', notification.index, name="notification.index"),
     
     path('zone/', zone.index, name="zone.index"),
     path('zone/store', zone.store, name="zone.store"),
@@ -78,6 +80,7 @@ urlpatterns += [
     path('hx-permission-plus/<int:id>/', group.plus, name="permission.plus"),
     path('hx-permission-list/<int:id>/', group.lists, name="permission.list"),
     path('hx-municipality-province', municipality.province, name="municipality.getby-province"),
+    path('hx-institution-patient', institution.patient, name="institution.getby-patient"),
 ]
 
 #route relanshiep

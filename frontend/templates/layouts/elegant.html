@@ -46,8 +46,8 @@
                             <ul class="cat-sub-menu">
                                 {% include 'components/dashboard/link-sidebar-submenu.html' with text='Pacientes' href='patient.index' %}                                
                                 {% include 'components/dashboard/link-sidebar-submenu.html' with text='Doença' href='sickness.index' %}
-                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Exame' href='patient.index' %}                                
-                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Notificar' href='sickness.index' %}                                
+                                {% comment %} {% include 'components/dashboard/link-sidebar-submenu.html' with text='Exame' href='patient.index' %}                                 {% endcomment %}
+                                {% include 'components/dashboard/link-sidebar-submenu.html' with text='Notificar' href='notification.index' %}                                
                            </ul>
                         </li>    
                         <li>
@@ -172,7 +172,7 @@
     <!-- Custom scripts -->
     <script src="{% static 'theme/elegant/js/script.js' %}"></script>
     
-    <script src="{% static 'js/btn-action.js' %}"></script>
+    <script src="{% static 'js/btn.actions.js' %}"></script>
     
     {% block 'script' %} {% endblock %} 
 {% endblock %}
