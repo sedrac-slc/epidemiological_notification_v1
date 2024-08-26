@@ -1,6 +1,8 @@
 {% include 'components/label.html' %}
 <select class="form-control border" id="{{ id|default:'' }}" name="{{ id|default:'' }}" value="{{ value|default:'' }}" required="{{ required|default:False }}"
-    hx-get="{% url 'institution.getby-patient' %}" hx-trigger="change" hx-target="#patient" hx-swap="innerHTML" >
+    hx-get="{% url 'institution.getby-patient' %}" hx-trigger="change" hx-target="#patient" hx-swap="innerHTML"
+>
+    <option class="text-muted" selected value="">Seleciona uma instituição</option>
     {% for institution in institutions %}
         <option value="{{ institution.id }}"> {{ institution.name }} </option>
     {% endfor %}

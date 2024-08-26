@@ -31,8 +31,7 @@ def store(request):
             laboratoryTechnicianService.save(request)
             messages.success(request, 'Técnico de laboratório cadastrada com successo!')
     except Exception as e:
-        return e
-        #messages.error(request, 'Não foi possível realizar o cadastramento!')
+        messages.error(request, 'Não foi possível realizar o cadastramento!')
     return redirect('laboratory_technician.index')
    
 

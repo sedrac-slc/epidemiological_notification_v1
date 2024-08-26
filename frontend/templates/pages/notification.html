@@ -17,5 +17,16 @@
         const formChangeInputValues = (item) => {
             //inputValueChange(item, 'name')
         }
+
+        const selectInstituion = document.querySelector('select#institution');
+
+        selectInstituion.addEventListener('change', function(e) {
+            htmx.ajax('GET', '{% url "institution.getby-patient" %}', { 
+                target: '#patient',
+                swap: 'innerHTML',
+                values: { 'institution': this.value }
+            });
+        });
+
     </script>
 {% endblock %}

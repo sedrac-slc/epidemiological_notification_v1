@@ -2,10 +2,28 @@
 {% block 'body' %} 
 <section class="row">
    <div class="col-md-6 p-1">
-      {% include 'components/htmx/select/institution.html' with label="Instituição:" id="institution" required=True  %}
+      {% include 'components/select/institution.html' with label="Instituição:" id="institution" required=True  %}
    </div>
    <div class="col-md-6 p-1">
       {% include 'components/select/patient.html' with label="Paciente:" id="patient" required=True  %}
    </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/select/sickness.html' with label="Doença:" id="sickness" required=True  %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/input-date.html' with label="Data obeservação:" id="observationDate" required=True %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/select/situation.html' with label="Situação:" id="situation" required=True  %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/input-date.html' with label="Data manifestação:" id="manifestationDate" required=True %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/select/classification.html' with label="Situação:" id="classification" required=True  %}
+   </div>
+   <div class="col-md-6 p-1">
+      {% include 'components/input-date.html' with label="Data notificação:" id="notificationDate" required=True %}
+   </div>   
 </section>
 {% endblock %}

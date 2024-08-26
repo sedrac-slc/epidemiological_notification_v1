@@ -41,14 +41,16 @@ def delete(request):
     if request.method != "POST": return redirect('institution.index')
     institutionService.hidden(request.POST.get('model'))
     messages.success(request, 'Instituição eliminada com successo!')
-    return redirect('institution.index')    
+    return redirect('institution.index')
 
 def patient(request):
-    instituions = []
-    patient = request.GET.get('patient','')
-    instituions = patientService.findAllByPatient(request.GET.get('institution'))
-    data = ''.join([
-        f'<option value="{escape(i.id)}" {"selected" if str(i.id) == escape(patient) else ""}>{escape(i.name)}</option>'
-        for i in instituions
-    ])
+    patients = []
+    try:
+        patient = request.GET.get('patient','')
+        patients = patientService.findAllByPatient(request.GET.get('institution'))
+        data = ''.join([
+            f'<option value="{escape(i.id)}" {"selected" if str(i.id) == escape(patient) else ""}>{escape(i.person.fullname)}</option>' for i in patients
+        ])
+    except Exception as e:
+        print(e)
     return HttpResponse(data, content_type="text/html;charset=utf-8")
