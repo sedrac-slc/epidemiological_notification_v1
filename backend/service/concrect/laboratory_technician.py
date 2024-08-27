@@ -2,6 +2,9 @@ from backend.entities.concrect.laboratory_technician import LaboratoryTechnician
 from backend.service.helper import paginator
 from backend.dto.laboratory_technician import create_laboratory_technician, update_laboratory_technician, hidden_laboratory_technician, find_by_id
 from backend.utils.data import save_model
+from backend.service.concrect.institution import InstitutionService
+
+institutionService = InstitutionService()
 
 class LaboratoryTechnicianService:
    
@@ -16,7 +19,11 @@ class LaboratoryTechnicianService:
     
     def findByPerson(self, laboratoryTechnician: LaboratoryTechnician):
         return LaboratoryTechnician.objects.filter(person = laboratoryTechnician.person, deleted_at__isnull=True, deleted_by__isnull=True).first()    
-            
+
+    def findAllByInstituion(self, id):
+        institution = institutionService.findById(id)
+        return LaboratoryTechnician.objects.filter(person__institution = institution, deleted_at__isnull=True, deleted_by__isnull=True).all()
+
     def findOrSave(self, data: LaboratoryTechnician):
         patient = self.findByPerson(data)        
         if patient != None: 

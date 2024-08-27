@@ -6,11 +6,13 @@ from django.utils.html import escape
 from backend.service.concrect.patient import PatientService
 from backend.service.concrect.province import ProvinceService
 from backend.service.concrect.institution import InstitutionService
+from backend.service.concrect.laboratory_technician import LaboratoryTechnicianService
 from backend.dto.institution import to_institution , to_institution_model
 
 patientService = PatientService()
 provinceService = ProvinceService()
 institutionService = InstitutionService()
+laboratoryTechnicianService = LaboratoryTechnicianService()
 # Create your views here.
 def index(request):
     provinces = provinceService.findAll()
@@ -44,13 +46,17 @@ def delete(request):
     return redirect('institution.index')
 
 def patient(request):
-    patients = []
-    try:
-        patient = request.GET.get('patient','')
-        patients = patientService.findAllByPatient(request.GET.get('institution'))
-        data = ''.join([
-            f'<option value="{escape(i.id)}" {"selected" if str(i.id) == escape(patient) else ""}>{escape(i.person.fullname)}</option>' for i in patients
-        ])
-    except Exception as e:
-        print(e)
+    patient = request.GET.get('patient','')
+    patients = patientService.findAllByInstituion(request.GET.get('institution'))
+    data = ''.join([
+        f'<option value="{escape(i.id)}" {"selected" if str(i.id) == escape(patient) else ""}>{escape(i.person.fullname)}</option>' for i in patients
+    ])
+    return HttpResponse(data, content_type="text/html;charset=utf-8")
+
+def laboratoryTechnician(request):
+    technician = request.GET.get('laboratoryTechnician','')
+    technicians = laboratoryTechnicianService.findAllByInstituion(request.GET.get('institution'))
+    data = ''.join([
+        f'<option value="{escape(i.id)}" {"selected" if str(i.id) == escape(technician) else ""}>{escape(i.person.fullname)}</option>' for i in technicians
+    ])
     return HttpResponse(data, content_type="text/html;charset=utf-8")

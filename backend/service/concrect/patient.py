@@ -22,7 +22,7 @@ class PatientService:
     def findByPerson(self, patient: Patient):
         return Patient.objects.filter(person = patient.person, deleted_at__isnull=True, deleted_by__isnull=True).first()    
         
-    def findAllByPatient(self, id):
+    def findAllByInstituion(self, id):
         institution = institutionService.findById(id)
         return Patient.objects.filter(person__institution = institution, deleted_at__isnull=True, deleted_by__isnull=True).all()
         

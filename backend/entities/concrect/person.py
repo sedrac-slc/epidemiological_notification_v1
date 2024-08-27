@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from backend.entity import EntityCommon
-from backend.enums import GENDER_CHOICES, MARITAL_STATUS_CHOICES
+#from backend.enums import GENDER_CHOICES, MARITAL_STATUS_CHOICES
 from .institution import Institution
 
 def genders():
@@ -17,8 +17,8 @@ class Person(EntityCommon):
     fullname = models.TextField(max_length=100)
     identityCardNumber = models.TextField(max_length=100, unique= True)
     phone = models.TextField(max_length=100, null=True, blank=True)
-    gender = models.CharField(choices= GENDER_CHOICES, max_length=100)
-    maritalStatus = models.CharField(choices= MARITAL_STATUS_CHOICES, max_length=100)
+    gender = models.CharField(choices= tuple((key, key) for key in genders()), max_length=100)
+    maritalStatus = models.CharField(choices= tuple((key, key) for key in maritalStatus()) , max_length=100)
     birthday = models.DateField()
     
     def concat_values_fields(self):

@@ -26,6 +26,12 @@
                 swap: 'innerHTML',
                 values: { 'institution': this.value }
             });
+
+            htmx.ajax('GET', '{% url "institution.getby-laboratoryTechnician" %}', { 
+                target: '#laboratoryTechnician',
+                swap: 'innerHTML',
+                values: { 'institution': this.value }
+            });
         });
 
     </script>

@@ -81,6 +81,7 @@ urlpatterns += [
     path('hx-permission-list/<int:id>/', group.lists, name="permission.list"),
     path('hx-municipality-province', municipality.province, name="municipality.getby-province"),
     path('hx-institution-patient', institution.patient, name="institution.getby-patient"),
+    path('hx-institution-laboratoryTechnician', institution.laboratoryTechnician, name="institution.getby-laboratoryTechnician"),
 ]
 
 #route relanshiep

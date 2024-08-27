@@ -1,2 +1,4 @@
 {% include 'components/label.html' %}
-<input class="form-control border" type="{{ type|default:'text' }}" id="{{ id|default:'' }}" name="{{ id|default:'' }}" value="{{ value|default:'' }}" required="{{ required|default:False }}"/>
+<input class="form-control border" type="{{ type|default:'text' }}" id="{{ id|default:'' }}" name="{{ id|default:'' }}" value="{{ value|default:'' }}" required="{{ required|default:False }}"
+    {% if min %} min="{{ min }}" {% endif %}
+/>
