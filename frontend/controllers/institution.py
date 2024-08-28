@@ -54,7 +54,7 @@ def patient(request):
     return HttpResponse(data, content_type="text/html;charset=utf-8")
 
 def laboratoryTechnician(request):
-    technician = request.GET.get('laboratoryTechnician','')
+    technician = request.GET.get('technician','')
     technicians = laboratoryTechnicianService.findAllByInstituion(request.GET.get('institution'))
     data = ''.join([
         f'<option value="{escape(i.id)}" {"selected" if str(i.id) == escape(technician) else ""}>{escape(i.person.fullname)}</option>' for i in technicians

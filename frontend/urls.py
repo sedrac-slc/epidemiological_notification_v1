@@ -1,6 +1,6 @@
 from django.urls import path
 from frontend import views
-from frontend.controllers import notification, zone, commune, institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness, medical_appointment
+from frontend.controllers import notification, zone, commune, institution, doctor, patient, laboratory_technician, province, municipality, permission, group, sickness
 
 #routes views
 urlpatterns = [
@@ -13,9 +13,6 @@ urlpatterns = [
 
 
 urlpatterns += [
-    
-    path('notification/', notification.index, name="notification.index"),
-    
     path('zone/', zone.index, name="zone.index"),
     path('zone/store', zone.store, name="zone.store"),
     path('zone/update', zone.update, name="zone.update"),
@@ -55,22 +52,21 @@ urlpatterns += [
     path('institution/store', institution.store, name="institution.store"),
     path('institution/update', institution.update, name="institution.update"),
     path('institution/delete', institution.delete, name="institution.delete"),
-        
+
+    path('notification/', notification.index, name="notification.index"),
+    path('notification/store', notification.store, name="notification.store"),
+    path('notification/update', notification.update, name="notification.update"),
+    path('notification/delete', notification.delete, name="notification.delete"),    
+    
     path('municipality/', municipality.index, name="municipality.index"),
     path('municipality/store', municipality.store, name="municipality.store"),
     path('municipality/update', municipality.update, name="municipality.update"),
     path('municipality/delete', municipality.delete, name="municipality.delete"), 
 
-    path('medical_appointment/', medical_appointment.index, name="medical_appointment.index"),
-    path('medical_appointment/store', medical_appointment.store, name="medical_appointment.store"),
-    path('medical_appointment/update', medical_appointment.update, name="medical_appointment.update"),
-    path('medical_appointment/delete', medical_appointment.delete, name="medical_appointment.delete"),
-    
     path('laboratory_technician/', laboratory_technician.index, name="laboratory_technician.index"),
     path('laboratory_technician/store', laboratory_technician.store, name="laboratory_technician.store"),
     path('laboratory_technician/update', laboratory_technician.update, name="laboratory_technician.update"),
     path('laboratory_technician/delete', laboratory_technician.delete, name="laboratory_technician.delete"),
-                                
 ]
 
 #route ajax (htmx)
@@ -90,9 +86,4 @@ urlpatterns += [
     path('permission-group-list/<int:id>', permission.group_list, name="permission.group_list"),  
     path('group-permission-plus/<int:id>', group.permission_plus, name="group.permission_plus"),
     path('group-permission-list/<int:id>', group.permission_list, name="group.permission_list"), 
-]
-
-#route editor
-urlpatterns += [
-    
 ]

@@ -1,11 +1,48 @@
 {% extends "layouts/dashboard.html" %}
 
 {% block 'thead' %}
-    {% include 'components/th.html' with text='Nome' icon="file-text" %}
+    {% include 'components/th.html' with text='Instituição' %}
+    {% include 'components/th.html' with text='Paciente' %}
+    {% include 'components/th.html' with text='Técnico' %}
+    {% include 'components/th.html' with text='Doença' %}
+    {% include 'components/th.html' with text='Data observação' %}
+    {% include 'components/th.html' with text='Situação' %}
+    {% include 'components/th.html' with text='Data manifestação' %}
+    {% include 'components/th.html' with text='Classificação' %}
+    {% include 'components/th.html' with text='Data notificação' %}
+    {% include 'components/th.html' with text='Número de vacinas' %}
+    {% include 'components/th.html' with text='Data vacinação' %}    
 {% endblock %}
 
 {% block 'tbody' %}
- 
+    {% for notification in data %}
+        <tr>
+            <td id="institution-{{ forloop.counter0 }}" data-value="{{ notification.institution.id }}">
+                {{ notification.institution.name }}
+            </td>
+            <td id="patient-{{ forloop.counter0 }}" data-value="{{ notification.patient.id }}">
+                {{ notification.patient.person.fullname }}
+            </td>
+            <td id="laboratoryTechnician-{{ forloop.counter0 }}" data-value="{{ notification.laboratoryTechnician.id }}">
+                {{ notification.laboratoryTechnician.person.fullname }}
+            </td>
+            <td id="sickness-{{ forloop.counter0 }}" data-value="{{ notification.sickness.id }}">
+                {{ notification.sickness.name }}
+            </td>
+            <td id="observationDate-{{ forloop.counter0 }}">{{ notification.observationDate|date:'Y-m-d' }}</td>
+            <td id="situation-{{ forloop.counter0 }}" data-value="{{ notification.situation }}">
+                {{ notification.situation }}
+            </td>
+            <td id="manifestationDate-{{ forloop.counter0 }}">{{ notification.manifestationDate|date:'Y-m-d' }}</td>
+            <td id="classification-{{ forloop.counter0 }}" data-value="{{ notification.classification }}">
+                {{ notification.classification }}
+            </td>
+            <td id="notificationDate-{{ forloop.counter0 }}">{{ notification.notificationDate|date:'Y-m-d' }}</td>
+            <td id="numberOfVaccines-{{ forloop.counter0 }}">{{ notification.numberOfVaccines }}</td>
+            <td id="vaccinationDate-{{ forloop.counter0 }}">{{ notification.vaccinationDate|date:'Y-m-d' }}</td>
+            {% include 'components/td-action.html' with data='notification' index=forloop.counter0 model=notification.id paramone=notification.patient.id paramtwo=notification.laboratoryTechnician.id param0=notification.institution.id  %}
+        </tr>
+    {% endfor %} 
 {% endblock %}
 
 {% block 'modal' %}
@@ -14,25 +51,50 @@
 
 {% block 'script' %}
     <script>
+        const selectInstituion = document.querySelector('select#institution');
+        const linksActionModal = document.querySelectorAll('.link-modal.btn-action');
+
         const formChangeInputValues = (item) => {
-            //inputValueChange(item, 'name')
+            selectValueChange(item, 'patient')
+            selectValueChange(item, 'sickness')
+            selectValueChange(item, 'situation')
+            selectValueChange(item, 'institution')
+            selectValueChange(item, 'classification')
+            selectValueChange(item, 'laboratoryTechnician')
+
+            inputValueChange(item, 'observationDate')
+            inputValueChange(item, 'vaccinationDate')
+            inputValueChange(item, 'notificationDate')
+            inputValueChange(item, 'manifestationDate')
+
+            inputValueChange(item, 'numberOfVaccines')
         }
 
-        const selectInstituion = document.querySelector('select#institution');
-
-        selectInstituion.addEventListener('change', function(e) {
+        const htmxAjaxPatientAndTechnican = (dataPatient, dataTechican) => {
             htmx.ajax('GET', '{% url "institution.getby-patient" %}', { 
                 target: '#patient',
                 swap: 'innerHTML',
-                values: { 'institution': this.value }
+                values: dataPatient,
             });
 
             htmx.ajax('GET', '{% url "institution.getby-laboratoryTechnician" %}', { 
                 target: '#laboratoryTechnician',
                 swap: 'innerHTML',
-                values: { 'institution': this.value }
+                values: dataTechican,
             });
+        }
+
+        selectInstituion.addEventListener('change', function(e) {
+            const values = { 'institution': selectInstituion.value }
+            htmxAjaxPatientAndTechnican(values, values);
         });
 
+        linksActionModal.forEach( item => {
+            item.addEventListener('click', function(e) {
+                const dataPatient = { 'institution': item.dataset.param0, 'patient': item.dataset.paramone }
+                const dataTechnician = { 'institution': item.dataset.param0, 'technician': item.dataset.paramtwo }
+                htmxAjaxPatientAndTechnican(dataPatient, dataTechnician);
+            })
+        })
     </script>
 {% endblock %}

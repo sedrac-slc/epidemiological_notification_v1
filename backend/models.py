@@ -9,6 +9,5 @@ from .entities.concrect.province import Province
 from .entities.concrect.institution import Institution
 from .entities.concrect.municipality import Municipality
 from .entities.concrect.notification import Notification
-from .entities.concrect.medical_appointment import MedicalAppointment
 from .entities.concrect.laboratory_technician import LaboratoryTechnician
 # Create your models here.

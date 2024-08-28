@@ -57,8 +57,8 @@ btnUpdate.forEach( item => {
     item.addEventListener('click', (e) => {
         modelChange(item)
         formChangeInputValues(item)
-        closedOrOpenFormControl(true);
-        modalHeaderBackgroudChange("bg-warning", "text-white", "Editar");
+        closedOrOpenFormControl(true)
+        modalHeaderBackgroudChange("bg-warning", "text-white", "Editar")
     })
 })
 
@@ -66,8 +66,8 @@ btnDelete.forEach( item => {
     item.addEventListener('click', (e) => {
         modelChange(item)
         formChangeInputValues(item)
-        closedOrOpenFormControl(false);
-        modalHeaderBackgroudChange("bg-danger", "text-white", "Eliminar");
+        closedOrOpenFormControl(false)
+        modalHeaderBackgroudChange("bg-danger", "text-white", "Eliminar")
     })
 })
 

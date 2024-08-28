@@ -1,10 +1,10 @@
 {% if update %}
   <td>
-    {% include 'components/link-modal.html' with text='editar' cls='text-warning btn-update' icon='edit' method='update' url=update %}
+    {% include 'components/link-modal.html' with text='editar' cls='text-warning btn-update btn-action' icon='edit' method='update' url=update %}
   </td>
 {% endif %}
 {% if delete %}
   <td>
-    {% include 'components/link-modal.html' with text='eliminar' cls='text-danger btn-delete' icon='trash' method='delete' url=delete %}
+    {% include 'components/link-modal.html' with text='eliminar' cls='text-danger btn-delete btn-action' icon='trash' method='delete' url=delete %}
   </td>
 {% endif %}

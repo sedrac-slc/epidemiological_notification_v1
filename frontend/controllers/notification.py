@@ -1,20 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
-from backend.service.concrect.zone import ZoneService
 from backend.service.concrect.sickness import SicknessService
 from backend.service.concrect.institution import InstitutionService
-from backend.dto.zone import to_zone, to_zone_model
+from backend.service.concrect.notification import NotificationService
+from backend.dto.notification import to_notification, to_notification_model
 from backend.entities.concrect.notification import situations, ratings
 
-zoneService = ZoneService()
 sicknessService = SicknessService()
 institutionService = InstitutionService()
-
+notificationService = NotificationService()
 
 # Create your views here.
 def index(request):
-    data = []
+    data = notificationService.findAll()
     sicknesies = sicknessService.findAll()
     institutions = institutionService.findAll()
     return render(request, "pages/notification.html", {
@@ -24,26 +23,25 @@ def index(request):
         'situations': situations,
         'ratings': ratings,
         'title': 'Notificação',
-        'store': '#',
-        'update': '#',
-        'delete': '#' 
+        'store': reverse('notification.store'),
+        'update': reverse('notification.update'),
+        'delete': reverse('notification.delete') 
     })
 
 def store(request):
-    if request.method != "POST": return redirect('zone.index')
-    zoneService.save(to_zone(request))
-    messages.success(request, 'Zona cadastrada com successo!')
-    return redirect('zone.index')
-   
+    if request.method != "POST": return redirect('notification.index')
+    notificationService.save(to_notification(request))
+    messages.success(request, 'Notificação cadastrada com successo!')
+    return redirect('notification.index')
 
 def update(request):
-    if request.method != "POST": return redirect('zone.index') 
-    zoneService.update(to_zone_model(request))
-    messages.success(request, 'Zona editada com successo!')
-    return redirect('zone.index')
+    if request.method != "POST": return redirect('notification.index') 
+    notificationService.update(to_notification_model(request))
+    messages.success(request, 'Notificação editada com successo!')
+    return redirect('notification.index')
 
 def delete(request):
-    if request.method != "POST": return redirect('zone.index')
-    zoneService.hidden(request.POST.get('model'))
-    messages.success(request, 'Zona eliminada com successo!')
-    return redirect('zone.index')
+    if request.method != "POST": return redirect('notification.index')
+    notificationService.hidden(request.POST.get('model'))
+    messages.success(request, 'Notificação eliminada com successo!')
+    return redirect('notification.index')

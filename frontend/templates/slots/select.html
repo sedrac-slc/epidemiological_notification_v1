@@ -1,4 +1,5 @@
 {% include 'components/label.html' %}
 <select class="form-control border" id="{{ id|default:'' }}" name="{{ id|default:'' }}" value="{{ value|default:'' }}" required="{{ required|default:False }}">
+   <option value="" class="text-muted">Nenhum selecionado</option>
    {% block 'option' %} {% endblock %}
 </select>
