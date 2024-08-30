@@ -126,7 +126,7 @@
                             <ul class="users-item-dropdown nav-user-dropdown dropdown">
                                 {% include 'components/dashboard/nav-perfil-item.html' with text="Perfil" icon="user" %}
                                 {% include 'components/dashboard/nav-perfil-item.html' with text="Configuração" icon="settings" %}
-                                {% include 'components/dashboard/nav-perfil-item.html' with text="Sair" icon="log-out" danger=True %} 
+                                {% include 'components/dashboard/nav-perfil-item.html' with text="Sair" icon="log-out" danger=True id="logaut" %} 
                             </ul>
                         </div>
                     </div>
@@ -159,7 +159,6 @@
                     </ul>
                 </div>
             </footer>
-
         </div>
     </div>
 {% endblock %}
@@ -173,6 +172,32 @@
     <script src="{% static 'theme/elegant/js/script.js' %}"></script>
     
     <script src="{% static 'js/btn.actions.js' %}"></script>
+
+    <script>
+        const btnLogaut = document.querySelector('#logaut');
+
+        btnLogaut.addEventListener('click',(e) => {
+            Swal.fire({
+                title: "Sair do sistema?",
+                text: "Tens a certeza que desejas sair do sistema!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Confirmo",
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Cancelar",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  fetch("{% url 'logaut' %}")
+                    .then(response => {
+                        if (response.ok) {
+                            window.open("{% url 'login' %}", "__self");
+                        } 
+                    })
+                }
+              });
+        });
+    </script>
     
     {% block 'script' %} {% endblock %} 
 {% endblock %}

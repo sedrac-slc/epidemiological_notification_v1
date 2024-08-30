@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from backend.service.concrect.zone import ZoneService
 from backend.dto.zone import to_zone, to_zone_model
 
 zoneService = ZoneService()
 
 # Create your views here.
+@login_required
 def index(request):
     data = zoneService.findAllPage(request)
     return render(request, "pages/zone.html", {
@@ -17,19 +19,21 @@ def index(request):
         'delete': reverse('zone.delete') 
     })
 
+@login_required
 def store(request):
     if request.method != "POST": return redirect('zone.index')
     zoneService.save(to_zone(request))
     messages.success(request, 'Zona cadastrada com successo!')
     return redirect('zone.index')
    
-
+@login_required
 def update(request):
     if request.method != "POST": return redirect('zone.index') 
     zoneService.update(to_zone_model(request))
     messages.success(request, 'Zona editada com successo!')
     return redirect('zone.index')
 
+@login_required
 def delete(request):
     if request.method != "POST": return redirect('zone.index')
     zoneService.hidden(request.POST.get('model'))

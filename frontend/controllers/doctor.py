@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
 from django.db import transaction
+from django.contrib.auth.decorators import login_required
 from backend.entities.concrect.person import genders, maritalStatus
 from backend.service.concrect.doctor import DoctorService
 from backend.service.concrect.institution import InstitutionService
@@ -10,6 +11,7 @@ doctorService = DoctorService()
 institutionService = InstitutionService()
 
 # Create your views here.
+@login_required
 def index(request):
     institutions = institutionService.findAll()
     data = doctorService.findAllPage(request)
@@ -23,7 +25,8 @@ def index(request):
         'update': reverse('doctor.update'),
         'delete': reverse('doctor.delete') 
     })
-    
+
+@login_required
 def store(request):
     if request.method != "POST": return redirect('doctor.index')
     try:
@@ -34,7 +37,7 @@ def store(request):
         messages.error(request, 'Não foi possível realizar o cadastramento!')
     return redirect('doctor.index')
    
-
+@login_required
 def update(request):
     if request.method != "POST": return redirect('doctor.index')
     try:
@@ -44,7 +47,8 @@ def update(request):
     except Exception:
         messages.error(request, 'Não foi possível realizar o edição!')
     return redirect('doctor.index')
-    
+
+@login_required   
 def delete(request):
     if request.method != "POST": return redirect('doctor.index')
     try:

@@ -6,6 +6,7 @@ from frontend.controllers import notification, zone, commune, institution, docto
 urlpatterns = [
     path('', views.index, name="home"),
     path('login/', views.login, name="login"),
+    path('logaut/',views.logaut_auth, name="logaut"),
     path('register/', views.register, name="register"),
     path('dashboard/', views.dashboard, name="dashboard"),
     path('permission/', permission.index, name="permission.index"),

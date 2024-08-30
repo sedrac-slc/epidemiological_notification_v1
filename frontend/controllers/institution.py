@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponse
 from django.utils.html import escape
+from django.contrib.auth.decorators import login_required
 from backend.service.concrect.patient import PatientService
 from backend.service.concrect.province import ProvinceService
 from backend.service.concrect.institution import InstitutionService
@@ -14,6 +15,7 @@ provinceService = ProvinceService()
 institutionService = InstitutionService()
 laboratoryTechnicianService = LaboratoryTechnicianService()
 # Create your views here.
+@login_required
 def index(request):
     provinces = provinceService.findAll()
     data = institutionService.findAllPage(request)
@@ -25,26 +27,29 @@ def index(request):
         'update': reverse('institution.update'),
         'delete': reverse('institution.delete') 
     })
-    
+
+@login_required 
 def store(request):
     if request.method != "POST": return redirect('institution.index')
     institutionService.save(to_institution(request))
     messages.success(request, 'Instituição cadastrada com successo!')
     return redirect('institution.index')
    
-
+@login_required
 def update(request):
     if request.method != "POST": return redirect('institution.index') 
     institutionService.update(to_institution_model(request))
     messages.success(request, 'Instituição editada com successo!')
     return redirect('institution.index')
 
+@login_required
 def delete(request):
     if request.method != "POST": return redirect('institution.index')
     institutionService.hidden(request.POST.get('model'))
     messages.success(request, 'Instituição eliminada com successo!')
     return redirect('institution.index')
 
+@login_required
 def patient(request):
     patient = request.GET.get('patient','')
     patients = patientService.findAllByInstituion(request.GET.get('institution'))
@@ -53,6 +58,7 @@ def patient(request):
     ])
     return HttpResponse(data, content_type="text/html;charset=utf-8")
 
+@login_required
 def laboratoryTechnician(request):
     technician = request.GET.get('technician','')
     technicians = laboratoryTechnicianService.findAllByInstituion(request.GET.get('institution'))

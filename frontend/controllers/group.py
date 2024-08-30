@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from backend.service.concrect.permission import PermissionService
 from backend.service.concrect.group import GroupService
 from backend.dto.group import to_group, to_group_model
@@ -11,6 +12,7 @@ groupService = GroupService()
 permissionService = PermissionService()
 
 # Create your views here.
+@login_required
 def index(request):
     data = groupService.findAllPage(request)
     return render(request, "pages/group.html", {
@@ -21,24 +23,28 @@ def index(request):
         'delete': reverse('group.delete') 
     })
 
+@login_required
 def store(request):
     if request.method != "POST": return redirect('group.index')
     groupService.save(to_group(request))
     messages.success(request, 'Cargo cadastrada com successo!')
     return redirect('group.index')
-   
+
+@login_required
 def update(request):
     if request.method != "POST": return redirect('group.index') 
     groupService.update(to_group_model(request))
     messages.success(request, 'Cargo editada com successo!')
     return redirect('group.index')
 
+@login_required
 def delete(request): 
     if request.method != "POST": return redirect('group.index')
     groupService.delete(request.POST.get('model'))
     messages.success(request, 'Cargo eliminada com successo!')
     return redirect('group.index')
 
+@login_required
 def permission_plus(request, id):
     group = groupService.findById(id)
     permissions = permissionService.findInId(request.POST.getlist('permissions'))
@@ -48,6 +54,7 @@ def permission_plus(request, id):
     messages.success(request, 'Permissões adicionada ao grupo com successo!')
     return redirect('group.index')
 
+@login_required
 def permission_list(request, id):
     group = groupService.findById(id)
     permissions = permissionService.findInId(request.POST.getlist('permissions'))
@@ -57,12 +64,14 @@ def permission_list(request, id):
     messages.success(request, 'Permissões removida ao grupo com successo!')
     return redirect('group.index')
 
+@login_required
 def plus(request, id):
     #id de Group fazer um consultar para pegar exculir a permissiões que pertence ao grupo
     permissions = permissionService.findNotInGroup(id)
     data = createTablePlus(permissions, "permissions")
     return HttpResponse(data, content_type="text/html;charset=utf-8")
-    
+
+@login_required
 def lists(request,id):
     group = groupService.findById(id)
     permissions = group.permissions.all()

@@ -1,3 +1,5 @@
+Area administative /admin
+
 1- python -m venv venv
    pip install virtualenv
 2- venv/Scripts/activate (bash)
